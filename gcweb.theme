@@ -1,0 +1,7 @@
+<?php
+
+use Drupal\Core\Site\Settings;
+
+function gcweb_preprocess_links__language_block(&$variables) {
+    $variables['lang'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+}

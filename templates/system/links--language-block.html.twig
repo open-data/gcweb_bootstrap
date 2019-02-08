@@ -1,0 +1,21 @@
+{% if links -%}
+    {%- if heading -%}
+        {%- if heading.level -%}
+            <{{ heading.level }}{{ heading.attributes }}>{{ heading.text }}</{{ heading.level }}>
+        {%- else -%}
+            <h2{{ heading.attributes }}>{{ heading.text }}</h2>
+        {%- endif -%}
+    {%- endif -%}
+    <ul{{ attributes.addClass('list-inline', 'mrgn-bttm-none') }}>
+        {% if lang == 'en' %}
+            <li {{ links|last.attributes.addClass(key|clean_class).addClass(lang_curr) }}>
+                {{ links|last.link }}
+            </li>
+        {% else %}
+            <li {{ links|first.attributes.addClass(key|clean_class).addClass(lang_curr) }}>
+                {{ links|first.link }}
+            </li>
+        {% endif %}
+
+    </ul>
+{%- endif %}

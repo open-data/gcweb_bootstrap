@@ -2,6 +2,51 @@
 
 use Drupal\Core\Site\Settings;
 
+function gcweb_form_search_block_form_alter(&$form){
+    $form['#action'] = 'https://www.canada.ca/en/sr/srb.html#wb_land';
+    $form['keys']['#placeholder'] = 'Search Canada.ca';
+    $form['keys']['#name'] = 'q';
+
+    $form['cdn'] = [
+        '#name' => 'cdn',
+        '#value' => 'canada',
+        '#type' => 'hidden',
+        '#input' => 'TRUE',
+    ];
+    $form['st'] = [
+        '#name' => 'st',
+        '#value' => 's',
+        '#type' => 'hidden',
+        '#input' => 'TRUE',
+    ];
+    $form['num'] = [
+        '#name' => 'num',
+        '#value' => '10',
+        '#type' => 'hidden',
+        '#input' => 'TRUE',
+    ];
+    $form['langs'] = [
+        '#name' => 'langs',
+        '#value' => 'eng',
+        '#type' => 'hidden',
+        '#input' => 'TRUE',
+    ];
+    $form['st1rt'] = [
+        '#name' => 'st1rt',
+        '#value' => '0',
+        '#type' => 'hidden',
+        '#input' => 'TRUE',
+    ];
+    $form['s5bm3ts21rch'] = [
+        '#name' => 's5bm3ts21rch',
+        '#value' => 'x',
+        '#type' => 'hidden',
+        '#input' => 'TRUE',
+    ];
+    return $form;
+}
+
+
 function gcweb_preprocess_links__language_block(&$variables) {
     $variables['lang'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
 }

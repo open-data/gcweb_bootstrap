@@ -6,7 +6,7 @@
             <h2{{ heading.attributes }}>{{ heading.text }}</h2>
         {%- endif -%}
     {%- endif -%}
-    <ul{{ attributes.addClass('list-inline', 'mrgn-bttm-none') }}>
+    <ul{{ attributes.addClass('list-inline', 'mrgn-bttm-0') }}>
         {% if lang == 'en' %}
             <li {{ links|last.attributes.addClass(key|clean_class).addClass(lang_curr) }}>
                 {{ links|last.link }}

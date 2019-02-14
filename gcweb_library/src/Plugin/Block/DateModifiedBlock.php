@@ -146,10 +146,10 @@ class DateModifiedBlock extends BlockBase implements ContainerFactoryPluginInter
         $date = $this->dateFormatter->format($time, 'custom', $formatted_date);
 
         $build = [];
-        $build['datemodified_block']['#markup'] = '<div class="datemod mrgn-bttm-lg"><dl id="wb-dtmd">' . "\n";
+        $build['datemodified_block']['#markup'] = '<dl id="wb-dtmd">' . "\n";
         $build['datemodified_block']['#markup'] .= '<dt>' . $this->t('Date modified:') . '</dt>' . "\n";
         $build['datemodified_block']['#markup'] .= '<dd><time property="dateModified">' . $date . '</time></dd>';
-        $build['datemodified_block']['#markup'] .= '</dl></div>';
+        $build['datemodified_block']['#markup'] .= '</dl>';
         return $build;
     }
 

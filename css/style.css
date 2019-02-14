@@ -30,3 +30,8 @@
   color: #EB8B23 !important; }
 .pillars .opengov-open-dialog {
   color: #9D479A !important; }
+
+#drupal-off-canvas select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}

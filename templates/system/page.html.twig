@@ -27,7 +27,7 @@
  * - title_prefix: Additional output populated by modules, intended to be
  *   displayed in front of the main title tag that appears in the template.
  * - title: The page title, for use in the actual content.
- * - title_suffix: Additional output populated by modules, intended to be
+ * - title_suffix: Additional o utput populated by modules, intended to be
  *   displayed after the main title tag that appears in the template.
  * - messages: Status and error messages. Should be displayed prominently.
  * - tabs: Tabs linking to any sub-pages beneath the current page (e.g., the
@@ -62,66 +62,58 @@
 {% if page.navigation or page.navigation_collapsible %}
   {% block navbar %}
 
-    {%
-      set navbar_classes = [
-      'navbar',
-      theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
-      theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : '',
-    ]
-    %}
-    <header{{ navbar_attributes.addClass(navbar_classes) }} id="navbar" role="banner">
-      <div id="wb-bnr" class="{{ container }}">
-        <section id="wb-lng" class="visible-md visible-lg text-right">
-          <h2 class="wb-inv">{{ 'Language selection'|t }}</h2>
-          <div class="row">
-            <div class="col-md-12">
-              {{ page.language_toggle }}
-            </div>
-          </div>
+    <header role="banner">
+      <div id="wb-bnr" class="{{ container }}" >
+
+        <section id="wb-lng" class="text-right">
+          <h2 class="wb-inv">Language selection</h2>
+          {{ page.language_toggle }}
         </section>
         <div class="row">
-          {{ page.banner }}
-          <section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
-            <h2>{{ 'Search and menus'|t }}</h2>
-            <ul class="list-inline text-right chvrn">
-              <li>
-                <a href="#mb-pnl" title="{{ 'Search and menus'|t }}" aria-controls="mb-pnl" class="overlay-lnk" role="button">
-                  <span class="glyphicon glyphicon-search">
-                    <span class="glyphicon glyphicon-th-list">
-                      <span class="wb-inv">{{ 'Search and menus'|t }}</span>
-                    </span>
-                  </span>
-                </a>
-              </li>
-            </ul>
-            <div id="mb-pnl"></div>
+          <div class="brand col-xs-5 col-md-4">
+            <a href="https://www.canada.ca/en.html"><img alt="" src="/libraries/theme-gcweb/assets/sig-blk-en.svg"><span class="wb-inv"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span></a>
+          </div>
+          <section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
+            {% if (language.id == 'fr') %}
+              <h2>Rechercher</h2>
+              <form name="cse-search-box" class="form-inline" role="search" action="https://www.canada.ca/fr/sr/srb.html" method="get">
+             {% else %}
+              <h2>Search</h2>
+              <form name="cse-search-box" class="form-inline" role="search" action="https://www.canada.ca/en/sr/srb.html" method="get">
+             {% endif %}
+              <div class="form-group">
+                {% if (language.id == 'fr') %}
+                  <label for="wb-srch-q" class="wb-inv">Rechercher dans Canada.ca</label>
+                  <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Rechercher dans Canada.ca">
+                {% else %}
+                  <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+                  <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca">
+                {% endif %}
+                <datalist id="wb-srch-q-ac">
+                </datalist>
+              </div>
+              <div class="form-group submit">
+                <button type="submit" id="wb-srch-sub" name="wb-srch-sub" class="btn btn-primary btn-small"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+              </div>
+            </form>
           </section>
-          {{ page.search }}
         </div>
       </div>
- {#     {% if gcweb_cdn and gcweb_cdn_url %}
-        <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="{{ gcweb_cdn_url }}{{ language }}.html" typeof="SiteNavigationElement">
-          <div class="pnl-strt {{ container }} nvbar">
-            <h2 class="wb-inv">{{ 'Topics Menu'|t }}</h2>
-            {{ page.navigation }}
-          </div>
-        </nav>
-      {% else %}
-        <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-trgt="mb-pnl">
-          <div class="pnl-strt {{ container }} nvbar">
-            <h2 class="wb-inv">{{ 'Topics Menu'|t }}</h2>
-            {{ page.navigation }}
-          </div>
-        </nav>
-      {% endif %}
-      {{ page.breadcrumb }}
-#}
-      <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="//cdn.canada.ca/gcweb-cdn-live/sitemenu/sitemenu-en.html" typeof="SiteNavigationElement">
-        <div class="pnl-strt {{ container }} nvbar">
-          <h2 class="wb-inv">{{ 'Topics Menu'|t }}</h2>
-          {{ page.navigation }}
+
+      <nav class="gcweb-menu" typeof="SiteNavigationElement">
+        <div class="container">
+          <h2 class="wb-inv">Menu</h2>
+          <button type="button" aria-haspopup="true" aria-expanded="false">Menu<span class="wb-inv"> principal</span> <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+          {% if (language.id == 'fr') %}
+            <ul role="menu" aria-orientation="vertical" data-ajax-replace="/themes/custom/gcweb/ajax/sitemenu-v2-fr.html">
+            </ul>
+          {% else %}
+            <ul role="menu" aria-orientation="vertical" data-ajax-replace="/themes/custom/gcweb/ajax/sitemenu-v2-en.html">
+            </ul>
+          {% endif %}
         </div>
       </nav>
+
     </header>
   {% endblock %}
 {% endif %}
@@ -184,7 +176,9 @@
           {% block content %}
             <a id="main-content"></a>
             {{ page.content }}
-            {{ page.content_footer }}
+              <div class="pagedetails">
+                {{ page.content_footer }}
+              </div>
           {% endblock %}
         </section>
 
@@ -229,36 +223,24 @@
 
 {% endblock %}
 
-{# GCWeb #}
-{% if gcweb_cdn_goc and not gcweb_election %}
-  <aside class="gc-nttvs {{ container }}">
-    <h2>{{ 'Government of Canada activities and initiatives'|t }}</h2>
-    <div id="gcwb_prts" class="wb-eqht row" data-ajax-replace="//cdn.canada.ca/gcweb-cdn-live/features/features-{{ language }}.html">
-      <p class="mrgn-lft-md">
-        <a href="http://www.canada.ca/activities.html">{{ 'Access Government of Canada activities and initiatives'|t }}</a>
-      </p>
-    </div>
-  </aside>
-{% endif %}
-
 {% if page.footer %}
   {% if gcweb_cdn_footer_enable %}
-    <footer id="wb-info" role="contentinfo" data-ajax-replace="{{ gcweb_cdn_footer_url }}"></footer>
+    <footer id="wb-info" data-ajax-replace="{{ gcweb_cdn_footer_url }}"></footer>
   {% else %}
     {% block footer %}
-      <footer id="wb-info" role="contentinfo">
-        <div class="{{ container }}">
-          {{ page.footer }}
+      <footer id="wb-info">
+        <div class="landscape">
+            {{ page.footer }}
         </div>
         <div class="brand">
-          <div class="{{ container }}">
-            <div class="row ">
+          <div class="container">
+            <div class="row">
               {{ page.branding }}
               <div class="col-xs-6 visible-sm visible-xs tofpg">
-                <a href="#wb-cont">{{ 'Top of Page'|t }}<span class="glyphicon glyphicon-chevron-up"></span></a>
+                <a href="#wb-cont">Top of page <span class="glyphicon glyphicon-chevron-up"></span></a>
               </div>
               <div class="col-xs-6 col-md-2 text-right">
-                <img src='/libraries/theme-gcweb/assets/wmms-blk.svg' alt='{{ 'Symbol of the Government of Canada'|t }}' />
+                <object type="image/svg+xml" tabindex="-1" role="img" data="/libraries/theme-gcweb/assets/wmms-blk.svg" aria-label="Symbol of the Government of Canada"></object>
               </div>
             </div>
           </div>

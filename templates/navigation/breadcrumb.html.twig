@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme override for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ */
+#}
+{% if breadcrumb %}
+  <nav id="wb-bc" property="breadcrumb" role="navigation">
+    <h2>{{ 'You are here:'|t }}</h2>
+    <div class="container">
+      <ol class="breadcrumb">
+      {% for item in breadcrumb %}
+        <li>
+          {% if item.url %}
+            <a href="{{ item.url }}">{{ item.text }}</a>
+          {% else %}
+            {{ item.text }}
+          {% endif %}
+        </li>
+      {% endfor %}
+      </ol>
+    </div>
+  </nav>
+{% endif %}

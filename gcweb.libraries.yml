@@ -1,11 +1,13 @@
 global-styling:
   css:
     theme:
-      /libraries/theme-gcweb/css/theme.min.css: {}
+      /libraries/theme-gcweb/css/theme.min.css: { type: external, minified: true }
+      /libraries/theme-gcweb/css/wet-boew.min.css: { type: external, minified: true }
       css/style.css: {}
 
   js:
-    /libraries/wet-boew/js/wet-boew.min.js: {}
-    /libraries/theme-gcweb/js/theme.min.js: {}
+    /libraries/wet-boew/js/ie8-wet-boew.min.js: { type: external, minified: true }
+    /libraries/wet-boew/js/wet-boew.min.js: { type: external, minified: true }
+    /libraries/theme-gcweb/js/theme.min.js: { type: external, minified: true }
   dependencies:
     - core/jquery

@@ -35,3 +35,9 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+
+#wb-bc ol {
+  margin-top: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
+}

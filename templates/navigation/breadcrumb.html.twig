@@ -7,10 +7,11 @@
  * - breadcrumb: Breadcrumb trail items.
  */
 #}
+{% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 {% if breadcrumb %}
   <nav id="wb-bc" property="breadcrumb" role="navigation">
     <h2>{{ 'You are here:'|t }}</h2>
-    <div class="container">
+    <div class="{{ container }}">
       <ol class="breadcrumb">
       {% for item in breadcrumb %}
         <li>

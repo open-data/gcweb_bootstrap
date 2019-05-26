@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * Theme implementation for a 'webform' element.
+ *
+ * This is an copy of the webform.html.twig theme_wrapper which includes the
+ * 'title_prefix' and 'title_suffix' variables needed for
+ * contextual links to appear.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the webform.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_webform()
+ * @see _webform_form_after_build()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+  'form-inline',
+  'mrgn-tp-md',
+  'mrgn-bttm-xl',
+]
+%}
+
+<p class="bg-info mrgn-tp-xl">
+{% if vote_count is not empty %}
+  {% if vote_count == 0 %}
+    {{ 'Be the first one to rate this dataset'|t }}
+  {% else %}
+    {{ 'This dataset is rated  by'|t }} {{ vote_count }} {{ 'people with an average rating of'|t }}
+    <strong>
+      {% if vote_average <= 1 %}
+        {{ 'Need improvement'|t }}
+      {% elseif vote_average == 2 %}
+        {{ 'Fair'|t }}
+      {% elseif vote_average == 3 %}
+        {{ 'Good'|t }}
+      {% elseif vote_average == 4 %}
+        {{ 'Very Good'|t }}
+      {% elseif vote_average >= 5  %}
+        {{ 'Excellent'|t }}
+      {% endif %}
+    </strong>
+  {% endif %}
+{% endif %}
+</p>
+
+<form{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {{ children }}
+  {{ title_suffix }}
+</form>

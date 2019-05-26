@@ -1,34 +1,118 @@
 <?php
 
+use Drupal\Core\Routing\TrustedRedirectResponse;
+
 /**
  * @file
  * Functions to support theming in the GCWEB theme.
  */
 
-use Drupal\Core\Site\Settings;
-
 /**
  * Implements hook_preprocess_HOOK() for links--language-block.html.twig.
  */
 function gcweb_preprocess_links__language_block(&$variables) {
-  $variables['lang'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+}
+
+/**
+ * Implements template_preprocess_html().
+ */
+function gcweb_preprocess_html(&$variables) {
+  // Do not attach theme libraries during installation
+  if (drupal_installation_attempted()) {
+    return;
+  }
+  // Do not attach theme libraries for voting webform
+/*  $webform = \Drupal::routeMatch()->getParameters()->get('webform');
+  if (isset($webform) && $webform->id() == 'vote') {
+    return;
+  }
+*/
+  $variables['#attached']['library'][] = 'gcweb/gcweb-libraries';
 }
 
 /**
  * Implements hook_preprocess_HOOK() for page.html.twig.
  */
 function gcweb_preprocess_page(&$variables) {
+  // find language
+  $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
-  // date modified
-  $node = \Drupal::request()->get('node');
-  if (is_object($node)) {
+  if (is_object($node = \Drupal::request()->get('node'))) {
+    // redirect all users except comment moderators and admins to dataset page
+    if ($node->getType() == 'external') {
+      $role = \Drupal::currentUser()->getRoles();
+      if (!(in_array('comment_moderator',$role)) && !(in_array('administrator',$role))) {
+        $translated_node = $node->getTranslation($lang);
+        $path = $translated_node->get('field_url')->getValue();
+        $response = new TrustedRedirectResponse($path[0]['uri']);
+        $response->send();
+      }
+    }
+
+    // date modified
     $time = $node->getChangedTime();
     $variables['date_modified'] = \Drupal::service('date.formatter')->format($time, 'custom', 'Y-m-d');
   }
+  else {
+    $variables['date_modified'] = \Drupal::service('date.formatter')->format(time(), 'custom', 'Y-m-d');
+  }
 
   // search form link
-  $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
   $variables['search_home_form'] = 'https://www.canada.ca/' . $lang . '/sr/srb.html';
-  $variables['megamenu_link'] = '/themes/custom/gcweb/ajax/sitemenu-v2-' . $lang . '.html';
-
+  $variables['megamenu_link'] = 'https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-' . $lang . '.html';
 }
+
+/*
+ * to remove
+ * Implements hook_theme_suggestions_html_alter().
+ */
+/*
+function gcweb_theme_suggestions_html_alter(array &$suggestions, array $variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $suggestions[] = 'html__node__' . $node->bundle();
+  }
+}
+*/
+/* moved to plugin
+ * Implements hook_theme_suggestions_page_alter().
+ */
+/*
+function gcweb_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $suggestions[] = 'page__node__' . $node->bundle();
+  }
+}
+*/
+/*
+ * moved to plugin
+ * Implements hook_theme_suggestions_form_alter().
+ */
+/*
+function gcweb_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  $form_id = $variables['element']['#id'];
+  if ($node = \Drupal::routeMatch()->getParameter('node') && $form_id === 'comment-form') {
+    $suggestions[] = 'form__' . str_replace('-','_',$form_id);
+  }
+  if ($form_id === 'user-register-form' ) {
+    $suggestions[] = 'form__' . str_replace('-','_',$form_id);
+  }
+}
+*/
+/* moved to plugin
+ * Implements hook_theme_suggestions_HOOK_alter() for blocks
+ */
+/*
+function gcweb_theme_suggestions_block_alter(array &$suggestions, array $variables)
+{
+  if (isset($variables['elements']['content']['#block_content'])) {
+    $bundle = $variables['elements']['content']['#block_content']->bundle();
+    $label = $variables['elements']['content']['#block_content']->label();
+    if ($bundle == 'search') {
+      $block=BlockContent::load($variables['elements']['content']['#block_content']->id());
+      \Drupal::logger('debug')->warning('<pre><code>' . print_r(array_keys($block->get('field_search_path')), TRUE) . '</code></pre>');
+    }
+    $suggestions[] = 'block__' . $bundle . '__' . strtolower(str_replace(' ','_',$label));
+  }
+}*/
+

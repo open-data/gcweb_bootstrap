@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<form{{ attributes }}>
+  {{ children }}
+  <details class="mrgn-tp-md">
+    <summary class="alert alert-info">{{ 'Rules of Engagement'|t }}
+    </summary>
+    {% trans %}
+      <p>We look forward to hearing from you. Your ideas and feedback are central to the development of both the Open Government portal and the Government of Canada’s approach to Open Government.</p>
+      <p>While comments are moderated, the portal will not censor any comments except in a few specific cases, listed below. Accounts acting contrary to these rules may be temporarily or permanently disabled.</p>
+      <h3>Comments and Interaction</h3>
+      <p>Our team will read comments and participate in discussions when appropriate. Your comments and contributions must be relevant and respectful.</p>
+      <p>Our team will not engage in partisan or political issues or respond to questions that violate these Terms and Conditions.</p>
+      <p>Our team reserves the right to remove comments and contributions, and to block users based on the following criteria:</p>
+      <p>The comments or contributions:</p>
+      <ul>
+        <li>include personal, protected or classified information of the Government of Canada or infringes upon intellectual property or proprietary rights</li>
+        <li>are contrary to the principles of the Canadian Charter of Rights and Freedoms, Constitution Act, 1982</li>
+        <li>are racist, hateful, sexist, homophobic or defamatory, or contain or refer to any obscenity or pornography</li>
+        <li>are threatening, violent, intimidating or harassing</li>
+        <li>are contrary to any federal, provincial or territorial laws of Canada</li>
+        <li>constitute impersonation, advertising or spam</li>
+        <li>encourage or incite any criminal activity</li>
+        <li>are written in a language other than English or French</li>
+        <li>otherwise violate this notice</li>
+      </ul>
+      <p>Our team cannot commit to replying to every message or comment, but we look forward to continuing the conversation whenever possible. Please note that responses will be provided in the same language that was used in the original comment.</p>
+      <p>Our team will reply to comments in the official language in which they are posted. If we determine the response is a question of general public interest, we will respond in both official languages.</p>
+    {% endtrans %}
+  </details>
+</form>

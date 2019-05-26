@@ -1,36 +1,107 @@
-.pillars {
-  background-color: #eaebed;
-  display: inline-block;
-  padding: 10px 5px; }
-.pillars h2 {
-  display: inline;
-  font-size: 16px;
-  margin-left: 5px;
-  margin-right: 5px; }
-.pillars .ogov {
-  vertical-align: middle; }
-.pillars ul {
-  display: inline;
-  margin-left: 5px;
-  padding-left: 0;
-  font-size: 1.5em;
-  vertical-align: middle; }
-.pillars ul li {
-  display: inline-block;
-  margin: 0 7px 0 0;
-  padding: 0; }
-.pillars ul li a {
-  color: #284162 !important;
-  text-decoration: none; }
-.pillars .opengov-open-gov {
-  color: #365478 !important; }
-.pillars .opengov-open-data {
-  color: #3AB19D !important; }
-.pillars .opengov-open-info {
-  color: #EB8B23 !important; }
-.pillars .opengov-open-dialog {
-  color: #9D479A !important; }
+/* comments */
+.indented {
+  border-left: 5px solid #eaebed;
+  padding-left: 1.5em; }
 
+.ajax-comments-form-reply {
+  margin-top: 30px; }
+
+.js-comment {
+  margin-top: 30px;
+  margin-bottom: 30px; }
+
+.js-comment:first-of-type {
+  margin-top: 20px; }
+
+/* Form styles */
+.form-required:after {
+  content: "*";
+  display: inline-block;
+  color: #e00;
+  vertical-align: super;
+  margin-left: 4px;
+}
+
+/* webform */
+.webform-submission-form {
+  margin-top: 10px;
+  background: #eee;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1em; }
+
+/* voting */
+div.svg div.rateit-range {
+  background: url(../images/rating/mapleleaf-normal.svg);
+}
+
+div.svg div.rateit-hover {
+  background: url(../images/rating/mapleleaf-hover.svg);
+}
+
+div.svg div.rateit-selected {
+  background: url(../images/rating/mapleleaf-selected.svg);
+}
+
+div.svg div.rateit-preset {
+  background: url(../images/rating/mapleleaf-preset.svg);
+}
+
+/* browsing by subject */
+ul.subjects {
+  margin:0 0 50px 0;
+  padding: 0;
+  text-align: center;
+  list-style: none;
+}
+ul.subjects li {
+  margin:0;
+  padding: 0;
+  list-style: none;
+  vertical-align: top;
+  display: inline-block;
+}
+ul.subjects li a:hover, ul.subjects li a:hover span {
+  text-decoration: none!important;
+}
+ul.subjects li a {
+  display: inline-block;
+  margin: 0 16px 20px 16px;
+  outline: 0;
+}
+ul.subjects li a i:hover {
+  color: #8792A4;
+}
+ul.subjects li a i {
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  clear: both;
+  padding-top: 16px;
+  font-size: 40px;
+  color: #284162;
+}
+ul.subjects li a:hover, ul.subjects li a:hover span {
+  text-decoration: none!important;
+}
+ul.subjects li a span {
+  display: block;
+  width: 80px;
+}
+
+/* icons */
+.icon {
+  font-size: inherit;
+  min-height: 0px;
+  min-width: 0px; }
+
+.btn .icon {
+  padding-left: 0px;
+  min-height: 0px;
+}
+
+/* layout builder */
 #drupal-off-canvas select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -41,3 +112,4 @@
   padding-left: 0px;
   padding-right: 0px;
 }
+

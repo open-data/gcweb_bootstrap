@@ -1,13 +1,31 @@
 global-styling:
   css:
     theme:
-      /libraries/theme-gcweb/css/theme.min.css: { type: external, minified: true }
-      /libraries/theme-gcweb/css/wet-boew.min.css: { type: external, minified: true }
       css/style.css: {}
+  dependencies:
+    - core/jquery
 
+gcweb-libraries:
+  remote: http://wet-boew.github.io
+  license:
+    name: MIT
+    gpl-compatible: true
+  css:
+    theme:
+      /libraries/theme-gcweb/css/theme.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true }
+      /libraries/theme-gcweb/css/ie8-theme.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true }
+#      /libraries/theme-gcweb/css/theme-srv.min.css: { minified: true }
+#      /libraries/theme-gcweb/css/ie8-theme-srv.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true }
+      /libraries/theme-gcweb/css/wet-boew.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true }
+      /libraries/theme-gcweb/css/ie8-wet-boew.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true }
+      /libraries/theme-gcweb/css/wet-boew-overrides.min.css: { minified: true }
+      /libraries/theme-gcweb/css/small-component.min.css: { minified: true }
+      /libraries/theme-gcweb/css/messages.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true }
+      /libraries/theme-gcweb/css/messages-ie.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true }
   js:
-    /libraries/wet-boew/js/ie8-wet-boew.min.js: { type: external, minified: true }
-    /libraries/wet-boew/js/wet-boew.min.js: { type: external, minified: true }
-    /libraries/theme-gcweb/js/theme.min.js: { type: external, minified: true }
+    /libraries/wet-boew/js/ie8-wet-boew.min.js: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: false, weight: -1 }
+    /libraries/wet-boew/js/wet-boew.min.js: { preprocess: false, browsers: { IE: 'gte IE 9', '!IE': true }, minified: false, weight: -1 }
+    /libraries/wet-boew/js/ie8-wet-boew2.min.js: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: false, weight: -1 }
+    /libraries/theme-gcweb/js/theme.min.js: { preprocess: false, minified: false }
   dependencies:
     - core/jquery

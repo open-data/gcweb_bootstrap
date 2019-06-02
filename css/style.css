@@ -68,12 +68,6 @@ ul.subjects li a {
   display: inline-block;
   margin: 0 16px 20px 16px;
   outline: 0;
-}
-ul.subjects li a i:hover {
-  color: #8792A4;
-}
-ul.subjects li a i {
-  display: inline-block;
   height: 80px;
   width: 80px;
   text-align: center;
@@ -82,12 +76,16 @@ ul.subjects li a i {
   font-size: 40px;
   color: #284162;
 }
+ul.subjects li a:hover {
+  color: #8792A4;
+}
 ul.subjects li a:hover, ul.subjects li a:hover span {
   text-decoration: none!important;
 }
 ul.subjects li a span {
   display: block;
-  width: 80px;
+  width: 90px;
+  font-size: 15px;
 }
 
 /* icons */
@@ -99,6 +97,35 @@ ul.subjects li a span {
 .btn .icon {
   padding-left: 0px;
   min-height: 0px;
+}
+
+/* striped view */
+.views-striped {
+  border-bottom: 1px solid rgb(204,204,204);
+  padding: 10px 0;
+}
+
+.views-striped:nth-of-type(odd) {
+  background-color: #f5f5f5;
+}
+
+.views-striped:last-child {
+  border-bottom: none;
+}
+
+/* pagination */
+.dataTables_wrapper .dataTables_paginate .paginate_button.previous::before, .pager > li:first-child [rel="prev"]::before, .pagination > li:first-child [rel="prev"]::before, [dir="rtl"] .dataTables_wrapper .dataTables_paginate .paginate_button.next::before, [dir="rtl"] .pager [rel="next"]::before, [dir="rtl"] .pagination [rel="next"]::before {
+  content: "\e079" !important;
+  margin: 0 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.next::after, .pager > li:last-child [rel="next"]::after, .pagination > li:last-child [rel="next"]::after, [dir="rtl"] .dataTables_wrapper .dataTables_paginate .paginate_button.previous::after, [dir="rtl"] .pager [rel="prev"]::after, [dir="rtl"] .pagination [rel="prev"]::after {
+  content: "\e080" !important;
+  margin: 0 !important;
+}
+
+.pager li > a {
+  padding: 0 10px !important;
 }
 
 /* layout builder */
@@ -113,3 +140,8 @@ ul.subjects li a span {
   padding-right: 0px;
 }
 
+#drupal-off-canvas *, #drupal-off-canvas *:not(div) {
+  word-spacing: normal;
+  background: inherit;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "liberation sans", "Glyphicons Halflings", sans-serif;
+}

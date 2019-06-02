@@ -50,19 +50,23 @@
   'block',
   'block-' ~ configuration.provider|clean_class,
   'block-' ~ plugin_id|clean_class,
-  'mrgn-tp-lg',
   'clearfix',
 ]
 %}
-
 <section{{ attributes.addClass(classes) }}>
-  <a class="figcaption" href="{{ content.field_spotlight_link[0]['#url'] }}">
-    <figure>
-      <div class="thumbnail">
-        {{ content.field_spotlight_media }}
-      </div>
-      <figcaption class="h5">{{ content.field_spotlight_link[0]['#title'] }}</figcaption>
-      {{ content.body }}
-    </figure>
-  </a>
+  <div class="brdr-rds-0 panel panel-default">
+    {{ title_prefix }}
+    <header class="panel-heading">
+      {% if label %}
+        <h2 class="h5 mrgn-tp-0 mrgn-bttm-0"{{ title_attributes.addClass('block-title') }}>{{ label }}</h2>
+      {% endif %}
+    </header>
+    {{ title_suffix }}
+
+    <div class="panel-body">
+      {% block content %}
+        {{ content }}
+      {% endblock %}
+    </div>
+  </div>
 </section>

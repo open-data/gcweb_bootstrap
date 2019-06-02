@@ -21,6 +21,8 @@ class ThemeSuggestions extends BootstrapThemeSuggestions {
     $variables = Variables::create($context1);
 
     switch ($hook) {
+
+      // custom block
       case 'block':
         if (isset($variables['elements']['content']['#block_content'])) {
           $bundle = $variables['elements']['content']['#block_content']->bundle();
@@ -28,11 +30,13 @@ class ThemeSuggestions extends BootstrapThemeSuggestions {
         }
         break;
 
+      // custom form
       case 'form':
         $form_id = $variables['element']['#id'];
         $suggestions[] = 'form__' . str_replace('-','_',$form_id);
         break;
 
+      // page
       case 'page':
         $node = \Drupal::routeMatch()->getParameter('node');
         if (is_object($node)) {

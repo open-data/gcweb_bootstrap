@@ -48,6 +48,7 @@ class CatalogSearchBlockForm extends FormBase {
       '#id' => 'search_submit',
       '#button_type' => 'primary',
       '#icon' => Bootstrap::glyphicon('search'),
+//      '#label' => '<span class="visible-lg-inline">Find</span>',
 //      '#prefix' => '<span class="input-group-btn">',
 //      '#suffix' => '</span>',
     ];

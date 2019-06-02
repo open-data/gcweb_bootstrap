@@ -50,19 +50,11 @@
   'block',
   'block-' ~ configuration.provider|clean_class,
   'block-' ~ plugin_id|clean_class,
-  'mrgn-tp-lg',
   'clearfix',
 ]
 %}
 
 <section{{ attributes.addClass(classes) }}>
-  <a class="figcaption" href="{{ content.field_spotlight_link[0]['#url'] }}">
-    <figure>
-      <div class="thumbnail">
-        {{ content.field_spotlight_media }}
-      </div>
-      <figcaption class="h5">{{ content.field_spotlight_link[0]['#title'] }}</figcaption>
-      {{ content.body }}
-    </figure>
-  </a>
+  <h2 class="h3">{{ 'New and updated'|t }} {{ content.field_api_type[0]['#context']['value'] }}</h2>
+  {{ content.body }}
 </section>

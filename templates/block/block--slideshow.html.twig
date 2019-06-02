@@ -50,19 +50,46 @@
   'block',
   'block-' ~ configuration.provider|clean_class,
   'block-' ~ plugin_id|clean_class,
-  'mrgn-tp-lg',
   'clearfix',
 ]
 %}
 
+{# assumtion that maximum slideshow images are 20 #}
+{% set loop_counter = 20 %}
+
+{# setup loop condition #}
+{% if content.field_slideshow_images[0] is defined %}
+  {% set more_images = true %}
+{% else %}
+  {% set more_images = false %}
+{% endif %}
+{% set reset_condition = more_images %}
+
 <section{{ attributes.addClass(classes) }}>
-  <a class="figcaption" href="{{ content.field_spotlight_link[0]['#url'] }}">
-    <figure>
-      <div class="thumbnail">
-        {{ content.field_spotlight_media }}
-      </div>
-      <figcaption class="h5">{{ content.field_spotlight_link[0]['#title'] }}</figcaption>
-      {{ content.body }}
-    </figure>
-  </a>
+  <div class="wb-tabs carousel-s2 playing">
+    <ul role="tablist">
+      {% for i in 0..loop_counter if more_images %}
+        {%  if content.field_slideshow_images[i] is defined %}
+          <li{% if i == 0 %} class="active" {% endif %}><a href="#panel{{ i }}">{{ content.field_slideshow_images[i] }}</a></li>
+        {% else %}
+          {% set more_images = false %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    {% set more_images = reset_condition %}
+    <div class="tabpanels">
+      {% for j in 0..loop_counter if more_images %}
+        {%  if content.field_slideshow_images[j] is defined %}
+          <div role="tabpanel" id="panel{{ j }}" class="{% if j is even %}{{ 'in' }}{% else %}{{ 'out' }}{% endif %} fade">
+            <figure>
+              {{ content.field_slideshow_images[j] }}
+            </figure>
+          </div>
+        {% else %}
+          {% set more_images = false %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
 </section>

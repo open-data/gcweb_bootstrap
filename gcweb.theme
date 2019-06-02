@@ -1,21 +1,24 @@
 <?php
 
 use Drupal\Core\Routing\TrustedRedirectResponse;
+use Drupal\Core\Render\Markup;
 
 /**
  * @file
- * Functions to support theming in the GCWEB theme.
+ * Functions to support theming in the GCWEB theme
  */
 
 /**
- * Implements hook_preprocess_HOOK() for links--language-block.html.twig.
+ * Implements hook_preprocess_HOOK() for links--language-block.html.twig
+ * provide language variable to the twig template
  */
 function gcweb_preprocess_links__language_block(&$variables) {
   $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
 }
 
 /**
- * Implements template_preprocess_html().
+ * Implements template_preprocess_html()
+ * attach wet-boew libraries
  */
 function gcweb_preprocess_html(&$variables) {
   // Do not attach theme libraries during installation
@@ -32,7 +35,9 @@ function gcweb_preprocess_html(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for page.html.twig.
+ * Implements hook_preprocess_HOOK() for page.html.twig
+ * redirect non-admin users of external pages to the external page
+ * setup variables: date modified, canada.ca search form link and mega menu link for twig template
  */
 function gcweb_preprocess_page(&$variables) {
   // find language
@@ -63,56 +68,35 @@ function gcweb_preprocess_page(&$variables) {
   $variables['megamenu_link'] = 'https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-' . $lang . '.html';
 }
 
-/*
- * to remove
- * Implements hook_theme_suggestions_html_alter().
+/**
+ * Implements hook_preprocess_HOOK() for button input
+ * add an optional label to form button different from form value field
  */
-/*
-function gcweb_theme_suggestions_html_alter(array &$suggestions, array $variables) {
-  if ($node = \Drupal::routeMatch()->getParameter('node')) {
-    $suggestions[] = 'html__node__' . $node->bundle();
-  }
-}
-*/
-/* moved to plugin
- * Implements hook_theme_suggestions_page_alter().
- */
-/*
-function gcweb_theme_suggestions_page_alter(array &$suggestions, array $variables) {
-  if ($node = \Drupal::routeMatch()->getParameter('node')) {
-    $suggestions[] = 'page__node__' . $node->bundle();
-  }
-}
-*/
-/*
- * moved to plugin
- * Implements hook_theme_suggestions_form_alter().
- */
-/*
-function gcweb_theme_suggestions_form_alter(array &$suggestions, array $variables) {
-  $form_id = $variables['element']['#id'];
-  if ($node = \Drupal::routeMatch()->getParameter('node') && $form_id === 'comment-form') {
-    $suggestions[] = 'form__' . str_replace('-','_',$form_id);
-  }
-  if ($form_id === 'user-register-form' ) {
-    $suggestions[] = 'form__' . str_replace('-','_',$form_id);
-  }
-}
-*/
-/* moved to plugin
- * Implements hook_theme_suggestions_HOOK_alter() for blocks
- */
-/*
-function gcweb_theme_suggestions_block_alter(array &$suggestions, array $variables)
-{
-  if (isset($variables['elements']['content']['#block_content'])) {
-    $bundle = $variables['elements']['content']['#block_content']->bundle();
-    $label = $variables['elements']['content']['#block_content']->label();
-    if ($bundle == 'search') {
-      $block=BlockContent::load($variables['elements']['content']['#block_content']->id());
-      \Drupal::logger('debug')->warning('<pre><code>' . print_r(array_keys($block->get('field_search_path')), TRUE) . '</code></pre>');
-    }
-    $suggestions[] = 'block__' . $bundle . '__' . strtolower(str_replace(' ','_',$label));
-  }
-}*/
+function gcweb_preprocess_input__button(&$variables) {
 
+  if (!empty($variables['element']['#label'])) {
+    $variables['label'] = $variables['element']['#label'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view_fields()
+ * highlight search results
+ */
+function gcweb_preprocess_views_view_fields(&$variables) {
+  $view = $variables['view'];
+  if ($view->id() === 'blog' && $view->current_display === 'all' && $view->exposed_data['combine'] != '') {
+    $key = $view->exposed_data['combine'];
+    if (!empty($variables['fields']['nothing']->content)) {
+      /* @todo: display substring with key in it */
+      /* @todo: keep the case when highlighting */
+      $body = $variables['fields']['nothing']->content->__toString();
+      //$body = strip_tags($body, '<a><img><div><span>');
+      $replace_body = Markup::create(str_ireplace($key, '<mark>' . $key . '</mark>', $body));
+      //$replace_body = str_replace($key, '<mark>' . $key . '</mark>', $body);
+      //$start = strpos($replace_body,'<mark>');
+      //$replace_body = Markup::create(substr($replace_body, $start,$start + 700));
+      $variables['fields']['nothing']->content = $replace_body;
+    }
+  }
+}

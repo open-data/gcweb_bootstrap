@@ -87,16 +87,12 @@ function gcweb_preprocess_views_view_fields(&$variables) {
   $view = $variables['view'];
   if ($view->id() === 'blog' && $view->current_display === 'all' && $view->exposed_data['combine'] != '') {
     $key = $view->exposed_data['combine'];
-    if (!empty($variables['fields']['nothing']->content)) {
-      /* @todo: display substring with key in it */
-      /* @todo: keep the case when highlighting */
-      $body = $variables['fields']['nothing']->content->__toString();
-      //$body = strip_tags($body, '<a><img><div><span>');
+    if (!empty($variables['fields']['body']->content)) {
+      /* @todo: trim to display substring with key in it */
+      /* @todo: preserve case when highlighting */
+      $body = $variables['fields']['body']->content->__toString();
       $replace_body = Markup::create(str_ireplace($key, '<mark>' . $key . '</mark>', $body));
-      //$replace_body = str_replace($key, '<mark>' . $key . '</mark>', $body);
-      //$start = strpos($replace_body,'<mark>');
-      //$replace_body = Markup::create(substr($replace_body, $start,$start + 700));
-      $variables['fields']['nothing']->content = $replace_body;
+      $variables['fields']['body']->content = $replace_body;
     }
   }
 }

@@ -81,7 +81,7 @@
     <div class="tabpanels">
       {% for j in 0..loop_counter if more_images %}
         {%  if content.field_slideshow_images[j] is defined %}
-          <div role="tabpanel" id="panel{{ j }}" class="{% if j is even %}{{ 'in' }}{% else %}{{ 'out' }}{% endif %} fade">
+          <div role="tabpanel" id="panel{{ j }}" class="{% if j == 0 %}{{ 'in' }}{% else %}{{ 'out' }}{% endif %} fade">
             <figure>
               {{ content.field_slideshow_images[j] }}
             </figure>

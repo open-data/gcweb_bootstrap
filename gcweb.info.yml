@@ -27,3 +27,4 @@ regions:
 
 libraries:
   - 'gcweb/global-styling'
+  - 'webform_voting/global-styling'

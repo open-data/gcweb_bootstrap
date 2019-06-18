@@ -1,3 +1,65 @@
+/*citation*/
+.wb-overlay{
+  height: 450px;
+  width: 520px;
+  overflow: scroll;
+}
+.modal-header{
+  text-align: center;
+}
+.modal-body{
+  font-size: medium;
+
+}
+.modal-body th{
+  width: 65px;
+  text-align: right;
+  font-weight: normal;
+  color: #777;
+  padding-right: 16px;
+  white-space: nowrap;
+  vertical-align: top;
+  overflow-x: hidden;
+}
+.modal-body tr:hover{
+  background-color: #ddd;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 24px 41px 0 41px;
+}
+
+.modal-body table{
+  border-collapse:separate;
+  border-spacing:0 8px;
+}
+
+.reportLink{
+  font-size: small;
+  text-align: center;
+}
+
+.clip-citation{
+  width: 25px;
+  height: 32px;
+  background-color: #fff;
+  background-image: url("../images/Octicons-clippy.svg");
+  background-size: 25px 30px;
+  background-repeat:no-repeat;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #fff;
+}
+.clip-citation:hover{
+  /*background-color: #ddd;*/
+  border-color: darkgrey;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+}
+.copyAlert{
+  font-size: small;
+}
+
 /* comments */
 .indented {
   border-left: 5px solid #eaebed;

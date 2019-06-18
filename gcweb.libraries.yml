@@ -1,4 +1,6 @@
 global-styling:
+  js:
+    js/citation.js: {}
   css:
     theme:
       css/style.css: {}

@@ -1,0 +1,113 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - $block->subject: Block title.
+ * - $content: Block content.
+ * - $block->module: Module that generated the block.
+ * - $block->delta: An ID for the block, unique within each module.
+ * - $block->region: The block region embedding the current block.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. The default values can be one or more of the
+ *   following:
+ *   - block: The current template type, i.e., "theming hook".
+ *   - block-[module]: The module generating the block. For example, the user
+ *     module is responsible for handling the default user navigation block. In
+ *     that case the class would be 'block-user'.
+ * - $title_prefix (array): An array containing additional output populated by
+ *   modules, intended to be displayed in front of the main title tag that
+ *   appears in the template.
+ * - $title_suffix (array): An array containing additional output populated by
+ *   modules, intended to be displayed after the main title tag that appears in
+ *   the template.
+ *
+ * Helper variables:
+ * - $classes_array: Array of html class attribute values. It is flattened
+ *   into a string within the variable $classes.
+ * - $block_zebra: Outputs 'odd' and 'even' dependent on each block region.
+ * - $zebra: Same output as $block_zebra but independent of any block region.
+ * - $block_id: Counter dependent on each block region.
+ * - $id: Same output as $block_id but independent of any block region.
+ * - $is_front: Flags true when presented in the front page.
+ * - $logged_in: Flags true when the current user is a logged-in member.
+ * - $is_admin: Flags true when the current user is an administrator.
+ * - $block_html_id: A valid HTML ID and guaranteed unique.
+ *
+ * @ingroup templates
+ *
+ * @see bootstrap_preprocess_block()
+ * @see template_preprocess()
+ * @see template_preprocess_block()
+ * @see bootstrap_process_block()
+ * @see template_process()
+ */
+#}
+{%
+    set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    'clearfix',
+]
+%}
+<section{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {% if label %}
+        <h2{{ title_attributes.addClass('block-title') }}>{{ label }}</h2>
+    {% endif %}
+    {{ title_suffix }}
+        <section class="pillars mrgn-tp-md mrgn-bttm-md">
+            <h2>Follow:
+            </h2>
+            <ul>
+                <li><a href="https://twitter.com/OpenGovCan" title="Twitter"><i class="fa fa-twitter"></i> <span class="wb-inv">Twitter</span></a></li>
+                <li><a href="[site:url]/rss-feeds" title="RSS"><i class="fa fa-rss"></i> <span class="wb-inv">RSS</span></a></li>
+                <li>
+                    <p><a aria-controls="mid-screen" class="overlay-lnk" href="#mid-screen" role="button"><i class="fas fa-quote-right"></i></a>
+                    </p>
+                    <section class="wb-overlay modal-content overlay-def wb-popup-mid" id="mid-screen">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Cite
+                            </h2>
+                        </header>
+                        <div class="modal-body">
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <th>APA
+                                        <br />
+                                        <button class="clip-citation" onclick="copyText('selectableAPA')">
+                                        </button>
+                                        <p class="copyAlert" id="selectableAPACopied">&nbsp;
+                                        </p>
+                                    </th>
+                                    <td>
+                                        <div id="selectableAPA" onclick="selectText('selectableAPA')">Treasury Board Secretariat of Canada. ({{ created|date('Y F j') }}). {{ node_title }} [{{ type }}]. Retrieved from https://open.canada.ca/{{ language }}{{ site_url }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>MLA
+                                        <br />
+                                        <button class="clip-citation" onclick="copyText('selectableMLA')">
+                                        </button>
+                                        <p class="copyAlert" id="selectableMLACopied">&nbsp;
+                                        </p>
+                                    </th>
+                                    <td>
+                                        <div id="selectableMLA" onclick="selectText('selectableMLA')">"{{ node_title }}." Open Government, Treasury Board Secretariat of Canada, {{ created|date('j M. Y') }}, https://open.canada.ca/{{ language }}{{ site_url }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <a class="reportLink" href="/forms/contact-us?subject=Citation+Issue+Node+{{ nid }}"> (report issue with citation)</a>
+                    </section>
+                </li>
+            </ul>
+        </section>
+</section>

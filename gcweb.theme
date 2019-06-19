@@ -96,3 +96,21 @@ function gcweb_preprocess_views_view_fields(&$variables) {
     }
   }
 }
+function gcweb_preprocess_block__block_content__cf8209e7_dbe5_4f66_8146_5fc52de7832d(&$vars){
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node instanceof \Drupal\node\NodeInterface) {
+        // You can get nid and anything else you need from the node object.
+        $vars["nid"] = $node->id();
+        $vars["node_title"] = $node->getTitle();
+        $vars["created"] = $node->getCreatedTime();
+        $vars["site_url"] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$vars["nid"]);
+        $vars['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+        $type=$node->getType();
+        switch ($type){
+            case 'blog_post':
+                $vars["type"] = 'Article';
+                break;
+        }
+
+    }
+}

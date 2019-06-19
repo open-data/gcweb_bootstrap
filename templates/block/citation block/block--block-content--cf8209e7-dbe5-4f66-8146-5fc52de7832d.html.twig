@@ -53,21 +53,22 @@
     'clearfix',
 ]
 %}
+
 <section{{ attributes.addClass(classes) }}>
     {{ title_prefix }}
     {% if label %}
         <h2{{ title_attributes.addClass('block-title') }}>{{ label }}</h2>
     {% endif %}
     {{ title_suffix }}
-        <section class="pillars mrgn-tp-md mrgn-bttm-md">
-            <h2>Follow:
-            </h2>
+    <div class="pull-right">
+        <section class="followus">
+            <h2>Follow:</h2>
+
             <ul>
-                <li><a href="https://twitter.com/OpenGovCan" title="Twitter"><i class="fa fa-twitter"></i> <span class="wb-inv">Twitter</span></a></li>
-                <li><a href="[site:url]/rss-feeds" title="RSS"><i class="fa fa-rss"></i> <span class="wb-inv">RSS</span></a></li>
+                <li><a class="twitter" href="https://twitter.com/OpenGovCan"><span class="wb-inv">Twitter</span></a></li>
+                <li><a class="rss" href="[site:url]/rss-feeds"><span class="wb-inv">RSS</span></a></li>
                 <li>
-                    <p><a aria-controls="mid-screen" class="overlay-lnk" href="#mid-screen" role="button"><i class="fas fa-quote-right"></i></a>
-                    </p>
+                    <a aria-controls="mid-screen" class="overlay-lnk" href="#mid-screen" role="button"><i class="fas fa-quote-left"></i><span class="wb-inv">Cite</span></a>
                     <section class="wb-overlay modal-content overlay-def wb-popup-mid" id="mid-screen">
                         <header class="modal-header">
                             <h2 class="modal-title">Cite
@@ -110,4 +111,5 @@
                 </li>
             </ul>
         </section>
+    </div>
 </section>

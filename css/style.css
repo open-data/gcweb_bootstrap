@@ -1,5 +1,5 @@
 /*citation*/
-.wb-overlay{
+.wb-overlay.open{
   height: 450px;
   width: 520px;
   overflow: scroll;

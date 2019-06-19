@@ -107,7 +107,7 @@ function gcweb_preprocess_block__block_content__cf8209e7_dbe5_4f66_8146_5fc52de7
         $vars['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
         $type=$node->getType();
         switch ($type){
-            case 'blog_post':git 
+            case 'blog_post':
                 $vars["type"] = 'Article';
                 break;
         }

@@ -86,8 +86,14 @@
                                         </p>
                                     </th>
                                     <td>
-                                        <div id="selectableAPA" onclick="selectText('selectableAPA')">Treasury Board Secretariat of Canada. ({{ created|date('Y F j') }}). {{ node_title }} [{{ type }}]. Retrieved from https://open.canada.ca/{{ language }}{{ site_url }}
-                                        </div>
+                                        {% if language=='en' %}
+                                            <div id="selectableAPA" onclick="selectText('selectableAPA')">Treasury Board Secretariat of Canada. ({{ created|date('Y F j') }}). {{ node_title }} [{{ type }}]. Retrieved from https://open.canada.ca/{{ language }}{{ site_url }}
+                                            </div>
+                                        {% else %}
+                                            <div id="selectableAPA" onclick="selectText('selectableAPA')">Le Secrétariat du Conseil du Trésor. ({{ created|date('Y F j') }}). {{ node_title }} [{{ type }}].
+                                                Récupéré de https://open.canada.ca/{{ language }}{{ site_url }}
+                                            </div>
+                                        {% endif %}
                                     </td>
                                 </tr>
                                 <tr>
@@ -99,8 +105,13 @@
                                         </p>
                                     </th>
                                     <td>
-                                        <div id="selectableMLA" onclick="selectText('selectableMLA')">"{{ node_title }}." Open Government, Treasury Board Secretariat of Canada, {{ created|date('j M. Y') }}, https://open.canada.ca/{{ language }}{{ site_url }}
-                                        </div>
+                                        {% if language=='en' %}
+                                            <div id="selectableMLA" onclick="selectText('selectableMLA')">"{{ node_title }}." Open Government, Treasury Board Secretariat of Canada, {{ created|date('j M. Y') }}, https://open.canada.ca/{{ language }}{{ site_url }}
+                                            </div>
+                                        {% else %}
+                                            <div id="selectableMLA" onclick="selectText('selectableMLA')">"{{ node_title }}." Gouvernement ouvert, Le Secrétariat du Conseil du Trésor, {{ created|date('j M. Y') }}, https://open.canada.ca/{{ language }}{{ site_url }}
+                                            </div>
+                                        {% endif %}
                                     </td>
                                 </tr>
                                 </tbody>

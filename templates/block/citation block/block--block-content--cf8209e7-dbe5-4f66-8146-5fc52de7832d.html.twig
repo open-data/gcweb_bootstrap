@@ -51,7 +51,8 @@
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
     'clearfix',
-]
+    ]
+
 %}
 
 <section{{ attributes.addClass(classes) }}>
@@ -68,8 +69,13 @@
                 <li><a class="twitter" href="https://twitter.com/OpenGovCan"><span class="wb-inv">Twitter</span></a></li>
                 <li><a class="rss" href="[site:url]/rss-feeds"><span class="wb-inv">RSS</span></a></li>
                 <li>
-                    <a aria-controls="mid-screen" class="overlay-lnk" href="#mid-screen" role="button"><i class="fas fa-quote-left"></i><span class="wb-inv">Cite</span></a>
-                    <section class="wb-overlay modal-content overlay-def wb-popup-mid" id="mid-screen">
+                    {% if type=='landing_page' %}
+
+                    {% else %}
+                        <a aria-controls="mid-screen" class="overlay-lnk" href="#mid-screen" role="button"><i class="fas fa-quote-left"></i><span class="wb-inv">Cite</span></a>
+                    {% endif %}
+                   {# <a aria-controls="mid-screen" class="overlay-lnk" href="#mid-screen" role="button"><i class="fas fa-quote-left"></i><span class="wb-inv">Cite</span></a>
+                    #}<section class="wb-overlay modal-content overlay-def wb-popup-mid" id="mid-screen">
                         <header class="modal-header">
                             <h2 class="modal-title">Cite
                             </h2>
@@ -90,7 +96,7 @@
                                             <div id="selectableAPA" onclick="selectText('selectableAPA')">Treasury Board Secretariat of Canada. ({{ created|date('Y F j') }}). {{ node_title }} [{{ type }}]. Retrieved from https://open.canada.ca/{{ language }}{{ site_url }}
                                             </div>
                                         {% else %}
-                                            <div id="selectableAPA" onclick="selectText('selectableAPA')">Le Secrétariat du Conseil du Trésor. ({{ created|date('Y F j') }}). {{ node_title }} [{{ type }}].
+                                            <div id="selectableAPA" onclick="selectText('selectableAPA')">Le Secrétariat d u Conseil du Trésor. ({{ created|date('Y F j') }}). {{ node_title }} [{{ type }}].
                                                 Récupéré de https://ouvert.canada.ca/{{ language }}{{ site_url }}
                                             </div>
                                         {% endif %}

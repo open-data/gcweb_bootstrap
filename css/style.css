@@ -2,14 +2,22 @@
 .wb-overlay.open{
   height: 450px;
   width: 520px;
-  overflow: scroll;
+  overflow: auto;
 }
 .modal-header{
   text-align: center;
 }
 .modal-body{
-  font-size: medium;
+  font-size: small;
 
+}
+#selectableAPA, #selectableMLA{
+  max-width:400px;
+  width: auto;
+  font-size: 15px;
+  font-family: Arial;
+  color: black;
+  line-height: 20px;
 }
 .modal-body th{
   width: 65px;
@@ -22,7 +30,7 @@
   overflow-x: hidden;
 }
 .modal-body tr:hover{
-  background-color: #ddd;
+  background-color: #f2f2f2;
   overflow-y: auto;
   box-sizing: border-box;
   padding: 24px 41px 0 41px;
@@ -36,6 +44,7 @@
 .reportLink{
   font-size: small;
   text-align: center;
+  margin-left: 15px;
 }
 
 .clip-citation{
@@ -50,8 +59,8 @@
   border-color: #fff;
 }
 .clip-citation:hover{
-  /*background-color: #ddd;*/
-  border-color: darkgrey;
+  background-color: #b3d9ff;
+  border-color: #b3d9ff;
   border-style: solid;
   border-width: 2px;
   border-radius: 5px;

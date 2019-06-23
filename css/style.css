@@ -15,7 +15,6 @@
   max-width:400px;
   width: auto;
   font-size: 15px;
-  font-family: Arial;
   color: black;
   line-height: 20px;
 }
@@ -93,21 +92,24 @@
   margin-left: 4px;
 }
 
+.form-item h4.label {
+  border: none;
+  padding: 0px;
+  display: inline-block;
+  text-align: left;
+  color: #000;
+  font-size: 100%;
+}
+
 /* webform */
 .webform-submission-form {
   margin-top: 10px;
   background: #eee;
   border: 1px solid #ddd;
   border-radius: 4px;
-  padding: 1em; }
-
-/*Vote up Webform*/
-.webform-submission-webform-vote-up-form{
-  margin-top: 0px;
-  background: none;
-  border: none;
-  padding: 0em;
+  padding: 1em;
 }
+
 /* voting */
 div.svg div.rateit-range {
   background: url(../images/rating/mapleleaf-normal.svg);
@@ -123,6 +125,27 @@ div.svg div.rateit-selected {
 
 div.svg div.rateit-preset {
   background: url(../images/rating/mapleleaf-preset.svg);
+}
+
+.vote-thumbs-up-down {
+  padding: 0px !important;
+  background: transparent !important;
+  color: #26374a !important;
+  border: none !important;
+  font-size: 25px !important;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "liberation sans", "Glyphicons Halflings", sans-serif !important;
+}
+
+.webform-submission-vote-up-down-add-form {
+  padding: 5px 0 0 0 !important;
+  display: inline-block !important;
+}
+
+.webform-submission-app-vote-form{
+  background-color: #fff;
+  margin: 0;
+  border: 0;
+  padding: 0;
 }
 
 /* browsing by subject */
@@ -222,4 +245,74 @@ ul.subjects li a span {
   word-spacing: normal;
   background: inherit;
   font-family: "Lucida Grande", "Lucida Sans Unicode", "liberation sans", "Glyphicons Halflings", sans-serif;
+}
+
+/* highlighting using mark */
+mark {
+  background-color: #FFFF00 !important;
+}
+
+/* is-active navigation */
+#wb-sec .is-active {
+  background-color: #243850 !important;
+  color: #fff !important;
+}
+
+/* btn-success */
+.btn-success a {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+/* content type app classes */
+
+/* App Page Styling */
+#myCarousel{
+  padding-top: 3em;
+  width: 100%;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  margin: auto;
+}
+
+/*App views page styling*/
+.box{
+  padding: 15px;
+  border: 1px solid #BBB;
+  background: #EEE;
+  float: left;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.views-field-field-ribbon{
+  box-shadow: 0 3px 10px -5px black;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  top: 25px;
+  right: -50px;
+  transform: rotate(45deg);
+}
+
+.gc {
+  background: linear-gradient(#F70505 0%, #8F0808 100%);
+}
+
+.public {
+  background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+}
+
+.code, .edoc {
+  background: linear-gradient(#2989d8 0%, #1e5799 100%);
 }

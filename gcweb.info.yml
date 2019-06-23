@@ -3,8 +3,8 @@ type: theme
 base theme: bootstrap
 
 name: 'GCWeb'
-description: 'Wet-GCWeb Theme w/o the WET'
-package: 'Bootstrap'
+description: 'Theme implementation using WET-BOEW'
+package: 'Open Government'
 
 regions:
   branding: 'Branding'
@@ -27,4 +27,3 @@ regions:
 
 libraries:
   - 'gcweb/global-styling'
-  - 'webform_voting/global-styling'

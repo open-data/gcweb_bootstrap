@@ -27,22 +27,22 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('menu', 'nav', 'list-group', 'list-unstyled') }}>
-    {% else %}
-      <ul{{ attributes }}>
+<ul{{ attributes.addClass('menu', 'nav', 'list-group', 'list-unstyled') }}>
+  {% else %}
+  <ul{{ attributes }}>
     {% endif %}
     {% for item in items %}
       {% if menu_level == 0 %}
-        <li{{ item.attributes }}>
+      <li{{ item.attributes }}>
         <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
-      {%
-        set item_classes = [
+        {%
+          set item_classes = [
           item.is_expanded? 'expanded',
           item.is_expanded and menu_level == 0 ? 'dropdown',
           item.in_active_trail ? 'active',
           item.in_active_trail ? 'wb-navcurr',
         ]
-      %}
+        %}
       {% else %}
         <li{{ item.attributes.addClass(item_classes) }}>
         {{ link(item.title, item.url, {'class':['list-group-item']}) }}
@@ -52,6 +52,6 @@
       {% endif %}
       </li>
     {% endfor %}
-    </ul>
+  </ul>
   {% endif %}
-{% endmacro %}
+  {% endmacro %}

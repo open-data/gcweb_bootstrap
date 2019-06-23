@@ -2,6 +2,7 @@
 
 use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\Core\Render\Markup;
+use Drupal\views\Views;
 
 /**
  * @file
@@ -96,26 +97,42 @@ function gcweb_preprocess_views_view_fields(&$variables) {
     }
   }
 }
-function gcweb_preprocess_block__block_content__cf8209e7_dbe5_4f66_8146_5fc52de7832d(&$vars){
-    $node = \Drupal::routeMatch()->getParameter('node');
-    if ($node instanceof \Drupal\node\NodeInterface) {
-        // You can get nid and anything else you need from the node object.
-        $vars["nid"] = $node->id();
-        $vars["node_title"] = $node->getTitle();
-        $vars["created"] = $node->getCreatedTime();
-        $vars["site_url"] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$vars["nid"]);
-        $vars['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
-        $type=$node->getType();
-        if($type!='landing_page'){
-            $vars["type"] = 'Article';
-        }else{
-            $vars["type"] = 'landing_page';
-        }
-        /*switch ($type){
-            case 'article':
-                $vars["type"] = 'Article';
-                break;
-        }*/
 
-    }
+/**
+ * Implements template_preprocess_user()
+ * add recent contents view to the login page
+ * add recent comments view to the login page
+ */
+function gcweb_preprocess_user(&$variables) {
+  // recent contents
+  $content_recent = Views::getView('content_recent');
+  if (is_object($content_recent)) {
+    $content_recent->setDisplay('block_1');
+    $content_recent->execute();
+    $variables['content_recent'] = $content_recent->render();
+  }
+
+  // recent comments
+  $comments_recent = Views::getView('comments_recent');
+  if (is_object($comments_recent)) {
+    $comments_recent->setDisplay('block_1');
+    $comments_recent->execute();
+    $variables['comments_recent'] = $comments_recent->render();
+  }
+}
+
+/**
+ * Implements template_preprocess_block__block_content()
+ * setup variables for the citation block
+ */
+function gcweb_preprocess_block__block_content__cf8209e7_dbe5_4f66_8146_5fc52de7832d(&$variables){
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof \Drupal\node\NodeInterface) {
+    $variables["nid"] = $node->id();
+    $variables["node_title"] = $node->getTitle();
+    $variables["created"] = $node->getCreatedTime();
+    $variables["site_url"] = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$variables["nid"]);
+    $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $variables["type"] = ucfirst(str_replace('_', ' ', $node->getType()));
+  }
 }

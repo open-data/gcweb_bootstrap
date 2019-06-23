@@ -1,10 +1,9 @@
 global-styling:
-  js:
-    js/citation.js: {}
   css:
     theme:
       css/style.css: {}
-      css/app_style.css: {}
+  js:
+    js/citation.js: {}
   dependencies:
     - core/jquery
 

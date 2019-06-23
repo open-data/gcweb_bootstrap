@@ -46,87 +46,69 @@
  */
 #}
 {%
-    set classes = [
-    'block',
-    'block-' ~ configuration.provider|clean_class,
-    'block-' ~ plugin_id|clean_class,
-    'clearfix',
-    ]
-
+  set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  'clearfix',
+  ]
 %}
 
-<section{{ attributes.addClass(classes) }}>
-    {{ title_prefix }}
-    {% if label %}
-        <h2{{ title_attributes.addClass('block-title') }}>{{ label }}</h2>
-    {% endif %}
-    {{ title_suffix }}
-    <div class="pull-right">
-        <section class="followus">
-            <h2>Follow:</h2>
+{% set website_title = 'Open Government, Treasury Board Secretariat of Canada, Government of Canada'|t %}
+{% set website_url = 'https://open.canada.ca/'|t %}
 
-            <ul>
-                <li><a class="twitter" href="https://twitter.com/OpenGovCan"><span class="wb-inv">Twitter</span></a></li>
-                <li><a class="rss" href="[site:url]/rss-feeds"><span class="wb-inv">RSS</span></a></li>
-                <li>
-                    {% if type=='landing_page' %}
-
-                    {% else %}
-                        <a aria-controls="mid-screen" class="overlay-lnk" href="#mid-screen" role="button"><i class="fas fa-quote-left"></i><span class="wb-inv">Cite</span></a>
-                    {% endif %}
-                   {# <a aria-controls="mid-screen" class="overlay-lnk" href="#mid-screen" role="button"><i class="fas fa-quote-left"></i><span class="wb-inv">Cite</span></a>
-                    #}<section class="wb-overlay modal-content overlay-def wb-popup-mid" id="mid-screen">
-                        <header class="modal-header">
-                            <h2 class="modal-title">Cite
-                            </h2>
-                        </header>
-                        <div class="modal-body">
-                            <table>
-                                <tbody>
-                                <tr>
-                                    <th>APA
-                                        <br />
-                                        <button class="clip-citation" onclick="copyText('selectableAPA')">
-                                        </button>
-                                        <p class="copyAlert" id="selectableAPACopied">&nbsp;
-                                        </p>
-                                    </th>
-                                    <td>
-                                        {% if language=='en' %}
-                                            <div id="selectableAPA" onclick="selectText('selectableAPA')">Treasury Board Secretariat of Canada. ({{ created|date('Y F j') }}). {{ node_title }} [{{ type }}]. Retrieved from https://open.canada.ca/{{ language }}{{ site_url }}
-                                            </div>
-                                        {% else %}
-                                            <div id="selectableAPA" onclick="selectText('selectableAPA')">Le Secrétariat d u Conseil du Trésor. ({{ created|date('Y F j') }}). {{ node_title }} [{{ type }}].
-                                                Récupéré de https://ouvert.canada.ca/{{ language }}{{ site_url }}
-                                            </div>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>MLA
-                                        <br />
-                                        <button class="clip-citation" onclick="copyText('selectableMLA')">
-                                        </button>
-                                        <p class="copyAlert" id="selectableMLACopied">&nbsp;
-                                        </p>
-                                    </th>
-                                    <td>
-                                        {% if language=='en' %}
-                                            <div id="selectableMLA" onclick="selectText('selectableMLA')">"{{ node_title }}." Open Government, Treasury Board Secretariat of Canada, {{ created|date('j M. Y') }}, https://open.canada.ca/{{ language }}{{ site_url }}
-                                            </div>
-                                        {% else %}
-                                            <div id="selectableMLA" onclick="selectText('selectableMLA')">"{{ node_title }}." Gouvernement ouvert, Le Secrétariat du Conseil du Trésor, {{ created|date('j M. Y') }}, https://ouvert.canada.ca/{{ language }}{{ site_url }}
-                                            </div>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <a class="reportLink" href="/forms/contact-us?subject=Citation+Issue+Node+{{ nid }}"> (report issue with citation)</a>
-                    </section>
-                </li>
-            </ul>
-        </section>
-    </div>
-</section>
+<div class="pull-right">
+  <section class="followus">
+    <h2>{{ 'Follow:'|t }}</h2>
+    <ul>
+      <li><a class="twitter" href="https://twitter.com/{{ 'OpenGovCan'|t }}"><span class="wb-inv">Twitter</span></a></li>
+      <li><a class="rss" href="/{{ language }}/rss-feeds"><span class="wb-inv">RSS</span></a></li>
+      <li>
+        <a aria-controls="mid-screen" class="overlay-lnk" href="#mid-screen" role="button">
+         <i class="fas fa-quote-left"></i><span class="wb-inv">{{ 'Cite'|t }}</span></a>
+        <div class="wb-overlay modal-content overlay-def wb-popup-mid" id="mid-screen">
+          <header class="modal-header">
+            <h2 class="modal-title">{{ 'Cite'|t }}</h2>
+          </header>
+          <div class="modal-body">
+            <table>
+              <tbody>
+                <tr>
+                  <th>APA
+                    <br />
+                    <button class="clip-citation" onclick="copyText('selectableAPA')"></button>
+                    <p class="copyAlert" id="selectableAPACopied"></p>
+                  </th>
+                  <td>
+                    <div id="selectableAPA" onclick="selectText('selectableAPA')">
+                      {{ website_title }}.
+                      ({{ created|date('Y, F j') }}).
+                      <em>{{ node_title }}</em>.
+                      {{ 'Retrieved from'|t }} {{ website_url }}{{ language }}{{ site_url }}
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>MLA
+                    <br />
+                    <button class="clip-citation" onclick="copyText('selectableMLA')"></button>
+                    <p class="copyAlert" id="selectableMLACopied"></p>
+                  </th>
+                  <td>
+                    <div id="selectableMLA" onclick="selectText('selectableMLA')">
+                      “{{ node_title }}.”
+                      <em>{{ website_title }}</em>,
+                      {{ created|date('j F Y') }},
+                      {{ website_url }}{{ language }}{{ site_url }}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <a class="reportLink" href="/forms/contact-us?subject=Citation+Issue+Node+{{ nid }}">{{ '(Report an issue with citation)'|t }}</a>
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>

@@ -54,8 +54,8 @@
   ]
 %}
 
-{% set website_title = 'Open Government, Treasury Board Secretariat of Canada, Government of Canada'|t %}
-{% set website_url = 'https://open.canada.ca/'|t %}
+{% set website_title = 'Open Government, Government of Canada'|t %}
+{% set report_link =  language == 'en' ? 'forms/contact-us' : 'formulaire/faites-nous-part-de-vos-commentaires' %}
 
 <div class="pull-right">
   <section class="followus">
@@ -84,7 +84,7 @@
                       {{ website_title }}.
                       ({{ created|date('Y, F j') }}).
                       <em>{{ node_title }}</em>.
-                      {{ 'Retrieved from'|t }} {{ website_url }}{{ language }}{{ site_url }}
+                      {{ 'Retrieved from'|t }} {{ site_url }}
                     </div>
                   </td>
                 </tr>
@@ -99,16 +99,16 @@
                       “{{ node_title }}.”
                       <em>{{ website_title }}</em>,
                       {{ created|date('j F Y') }},
-                      {{ website_url }}{{ language }}{{ site_url }}
+                      {{ site_url }}
                     </div>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <a class="reportLink" href="/forms/contact-us?subject=Citation+Issue+Node+{{ nid }}">{{ '(Report an issue with citation)'|t }}</a>
+          <a class="reportLink" href="/{{ language }}/{{ report_link }}?subject=Citation+Issue+Node+{{ nid }}">{{ '(Report an issue with citation)'|t }}</a>
         </div>
       </li>
     </ul>
-  </section>
+   </section>
 </div>

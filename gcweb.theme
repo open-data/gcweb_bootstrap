@@ -128,10 +128,11 @@ function gcweb_preprocess_user(&$variables) {
 function gcweb_preprocess_block__block_content__cf8209e7_dbe5_4f66_8146_5fc52de7832d(&$variables){
   $node = \Drupal::routeMatch()->getParameter('node');
   if ($node instanceof \Drupal\node\NodeInterface) {
+    $variables['site_name'] = \Drupal::config('system.site')->get('name');
+    $variables['site_url'] = \Drupal::request()->getSchemeAndHttpHost() . \Drupal::request()->getRequestUri();
     $variables['nid'] = $node->id();
     $variables['node_title'] = $node->getTitle();
     $variables['created'] = $node->getCreatedTime();
-    $variables['site_url'] = \Drupal::request()->getSchemeAndHttpHost() . \Drupal::request()->getRequestUri();
     $variables['type'] = ucfirst(str_replace('_', ' ', $node->getType()));
     $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
   }

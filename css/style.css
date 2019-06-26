@@ -287,7 +287,6 @@ mark {
   width: 100%;
   position: relative;
   overflow: hidden;
-  z-index: -1;
 }
 
 .views-field-field-ribbon{

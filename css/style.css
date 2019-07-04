@@ -315,3 +315,65 @@ mark {
 .code, .edoc {
   background: linear-gradient(#2989d8 0%, #1e5799 100%);
 }
+
+/* facets */
+ul.js-facets-checkbox-links {
+  margin-left: -1.1em;
+  margin-right: -1.1em;
+}
+
+ul.js-facets-checkbox-links .facet-item label {
+  display: inline;
+}
+
+.facet-item.list-group-item {
+  border-bottom: 0 !important;
+  border-top: 1px solid #ccc !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-radius: unset !important;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.facet-item.list-group-item:first-child {
+  border-top: 0 !important;
+}
+
+.facet-item__value {
+  display: inline;
+  font-size: 14px;
+  font-weight: 400 !important;
+}
+
+.facet-item__count {
+  display: inline;
+  font-size: 14px;
+  font-weight: 400 !important;
+}
+
+.panel-primary > .panel-heading {
+  background-color: #335075 !important;
+}
+
+.panel-title {
+  padding: 0 15px;
+}
+
+.facets-soft-limit-link {
+  font-size: 14px;
+}
+
+.facet-summary-item--clear {
+  background-color: #eaebed !important;
+}
+
+.facet-summary-item--clear a {
+  font-size: 16px !important;
+}
+
+.glyphicon-remove.facet-item__status {
+  color: red !important;
+  font-size: 14px !important;
+  margin-right: 5px;
+}

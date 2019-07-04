@@ -2,22 +2,8 @@ global-styling:
   css:
     theme:
       css/style.css: {}
-  js:
-    js/citation.js: {}
-  dependencies:
-    - core/jquery
-
-gcweb-libraries:
-  remote: http://wet-boew.github.io
-  license:
-    name: MIT
-    gpl-compatible: true
-  css:
-    theme:
       /libraries/theme-gcweb/css/theme.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true }
       /libraries/theme-gcweb/css/ie8-theme.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true }
-#      /libraries/theme-gcweb/css/theme-srv.min.css: { minified: true }
-#      /libraries/theme-gcweb/css/ie8-theme-srv.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true }
       /libraries/theme-gcweb/css/wet-boew.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true }
       /libraries/theme-gcweb/css/ie8-wet-boew.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true }
       /libraries/theme-gcweb/css/wet-boew-overrides.min.css: { minified: true }
@@ -25,6 +11,7 @@ gcweb-libraries:
       /libraries/theme-gcweb/css/messages.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true }
       /libraries/theme-gcweb/css/messages-ie.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true }
   js:
+    js/citation.js: {}
     /libraries/wet-boew/js/ie8-wet-boew.min.js: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: false, weight: -1 }
     /libraries/wet-boew/js/wet-boew.min.js: { preprocess: false, browsers: { IE: 'gte IE 9', '!IE': true }, minified: false, weight: -1 }
     /libraries/wet-boew/js/ie8-wet-boew2.min.js: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: false, weight: -1 }

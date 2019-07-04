@@ -1,7 +1,6 @@
 <?php
 
 use Drupal\Core\Routing\TrustedRedirectResponse;
-use Drupal\Core\Render\Markup;
 use Drupal\views\Views;
 
 /**
@@ -15,24 +14,6 @@ use Drupal\views\Views;
  */
 function gcweb_preprocess_links__language_block(&$variables) {
   $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
-}
-
-/**
- * Implements template_preprocess_html()
- * attach wet-boew libraries
- */
-function gcweb_preprocess_html(&$variables) {
-  // Do not attach theme libraries during installation
-  if (drupal_installation_attempted()) {
-    return;
-  }
-  // Do not attach theme libraries for voting webform
-/*  $webform = \Drupal::routeMatch()->getParameters()->get('webform');
-  if (isset($webform) && $webform->id() == 'vote') {
-    return;
-  }
-*/
-  $variables['#attached']['library'][] = 'gcweb/gcweb-libraries';
 }
 
 /**
@@ -74,27 +55,8 @@ function gcweb_preprocess_page(&$variables) {
  * add an optional label to form button different from form value field
  */
 function gcweb_preprocess_input__button(&$variables) {
-
   if (!empty($variables['element']['#label'])) {
     $variables['label'] = $variables['element']['#label'];
-  }
-}
-
-/**
- * Implements hook_preprocess_views_view_fields()
- * highlight search results
- */
-function gcweb_preprocess_views_view_fields(&$variables) {
-  $view = $variables['view'];
-  if ($view->id() === 'blog' && $view->current_display === 'all' && $view->exposed_data['combine'] != '') {
-    $key = $view->exposed_data['combine'];
-    if (!empty($variables['fields']['body']->content)) {
-      /* @todo: trim to display substring with key in it */
-      /* @todo: preserve case when highlighting */
-      $body = $variables['fields']['body']->content->__toString();
-      $replace_body = Markup::create(str_ireplace($key, '<mark>' . $key . '</mark>', $body));
-      $variables['fields']['body']->content = $replace_body;
-    }
   }
 }
 
@@ -118,22 +80,5 @@ function gcweb_preprocess_user(&$variables) {
     $comments_recent->setDisplay('block_1');
     $comments_recent->execute();
     $variables['comments_recent'] = $comments_recent->render();
-  }
-}
-
-/**
- * Implements template_preprocess_block__block_content()
- * setup variables for the citation block
- */
-function gcweb_preprocess_block__block_content__cf8209e7_dbe5_4f66_8146_5fc52de7832d(&$variables){
-  $node = \Drupal::routeMatch()->getParameter('node');
-  if ($node instanceof \Drupal\node\NodeInterface) {
-    $variables['site_name'] = \Drupal::config('system.site')->get('name');
-    $variables['site_url'] = \Drupal::request()->getSchemeAndHttpHost() . \Drupal::request()->getRequestUri();
-    $variables['nid'] = $node->id();
-    $variables['node_title'] = $node->getTitle();
-    $variables['created'] = $node->getCreatedTime();
-    $variables['type'] = ucfirst(str_replace('_', ' ', $node->getType()));
-    $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
   }
 }

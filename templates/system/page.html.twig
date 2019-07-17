@@ -220,28 +220,24 @@
 {% endblock %}
 
 {% if page.footer %}
-  {% if gcweb_cdn_footer_enable %}
-    <footer id="wb-info" data-ajax-replace="{{ gcweb_cdn_footer_url }}"></footer>
-  {% else %}
-    {% block footer %}
-      <footer id="wb-info">
-        <div class="landscape">
-            {{ page.footer }}
-        </div>
-        <div class="brand">
-          <div class="{{ container }}">
-            <div class="row">
-              {{ page.branding }}
-              <div class="col-xs-6 visible-sm visible-xs tofpg">
-                <a href="#wb-cont">Top of page <span class="glyphicon glyphicon-chevron-up"></span></a>
-              </div>
-              <div class="col-xs-6 col-md-2 text-right">
-                <object type="image/svg+xml" tabindex="-1" role="img" data="/libraries/theme-gcweb/assets/wmms-blk.svg" aria-label="Symbol of the Government of Canada"></object>
-              </div>
+  {% block footer %}
+    <footer id="wb-info">
+      <div class="landscape">
+          {{ page.footer }}
+      </div>
+      <div class="brand">
+        <div class="{{ container }}">
+          <div class="row">
+            {{ page.branding }}
+            <div class="col-xs-6 visible-sm visible-xs tofpg">
+              <a href="#wb-cont">{{ 'Top of page'|t }} <span class="glyphicon glyphicon-chevron-up"></span></a>
+            </div>
+            <div class="col-xs-6 col-md-2 text-right">
+              <object type="image/svg+xml" tabindex="-1" role="img" data="/libraries/theme-gcweb/assets/wmms-blk.svg" aria-label="Symbol of the Government of Canada"></object>
             </div>
           </div>
         </div>
-      </footer>
-    {% endblock %}
-  {% endif %}
+      </div>
+    </footer>
+  {% endblock %}
 {% endif %}

@@ -136,7 +136,7 @@ div.svg div.rateit-preset {
   font-family: "Lucida Grande", "Lucida Sans Unicode", "liberation sans", "Glyphicons Halflings", sans-serif !important;
 }
 
-.webform-submission-vote-up-down-add-form {
+.webform-submission-vote-up-down-add-form, .webform-submission-vote-up-down-external-add-form {
   padding: 5px 0 0 0 !important;
   display: inline-block !important;
 }
@@ -249,7 +249,7 @@ ul.subjects li a span {
 
 /* highlighting using mark */
 mark {
-  background-color: #FFFF00 !important;
+  background-color: yellow !important;
 }
 
 /* is-active navigation */

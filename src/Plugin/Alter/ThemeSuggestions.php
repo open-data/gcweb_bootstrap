@@ -43,6 +43,23 @@ class ThemeSuggestions extends BootstrapThemeSuggestions {
           $suggestions[] = 'page__' . $node->bundle();
         }
         break;
+
+      // views
+      case 'views_view':
+        $view = $variables['view'];
+        if (is_object($view)) {
+          $suggestions[] = 'view_view__' . $view->id();
+          $suggestions[] = 'view_view__' . $view->id() . '__' . $view->current_display;
+        }
+        break;
+
+      // view fields
+      case 'views_view_field':
+        $field = $variables['field'];
+        if (is_object($field)) {
+          $suggestions[] = 'view_view__field__' . $field->field;
+        }
+        break;
     }
 
     parent::alter($suggestions, $context1, $hook);

@@ -61,7 +61,7 @@
     {{ title_prefix }}
     {% if label %}
       <header class="panel-heading">
-        <h2{{ title_attributes.addClass('panel-title') }}>{{ label }}</h2>
+        <h2{{ title_attributes.addClass('panel-title') }}>{{ label|t }}</h2>
       </header>
     {% endif %}
     {{ title_suffix }}

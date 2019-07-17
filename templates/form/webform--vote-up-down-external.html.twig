@@ -21,36 +21,11 @@
  * @ingroup themeable
  */
 #}
-{%
-  set classes = [
-  'form-inline',
-  'mrgn-tp-lg',
-  ]
-%}
-
-<form{{ attributes.addClass(classes) }}>
+<span>
+  <strong>{{ 'Votes: '|t }}</strong>{{ vote_up_down_value }}
+</span>
+<form{{ attributes.addClass('form-inline') }}>
   {{ title_prefix }}
   {{ children }}
   {{ title_suffix }}
 </form>
-
-<p class="bg-info">
-  {% if vote_count is not empty %}
-    {% if vote_count != 0 %}
-      {{ 'This dataset is rated by @votecount with an average rating of '|t  ({ '@votecount': vote_count }) }}
-      <strong>
-        {% if vote_average <= 1 %}
-          {{ 'Need improvement'|t }}
-        {% elseif vote_average == 2 %}
-          {{ 'Fair'|t }}
-        {% elseif vote_average == 3 %}
-          {{ 'Good'|t }}
-        {% elseif vote_average == 4 %}
-          {{ 'Very Good'|t }}
-        {% elseif vote_average >= 5  %}
-          {{ 'Excellent'|t }}
-        {% endif %}
-      </strong>
-    {% endif %}
-  {% endif %}
-</p>

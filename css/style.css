@@ -344,6 +344,7 @@ ul.js-facets-checkbox-links .facet-item label {
   display: inline;
   font-size: 14px;
   font-weight: 400 !important;
+  margin-left: 5px;
 }
 
 .facet-item__count {

@@ -83,3 +83,23 @@ function gcweb_preprocess_user(&$variables) {
     $variables['comments_recent'] = $comments_recent->render();
   }
 }
+function gcweb_preprocess_breadcrumb(&$variables) {
+    if (($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb'] && $type=$node->hasField('field_commitment_type')) {
+        $breadcrumb = &$variables['breadcrumb'];
+        if ($type='nap2020_milestone'){
+            //comment gallery link
+            array_push($breadcrumb, [
+                'text' => 'Comment Gallery',
+                'url' => '/',
+            ]);
+            array_push($breadcrumb, [
+                'text' => 'Commitment',
+                'url' => '/',
+            ]);
+            array_push($breadcrumb, [
+                'text' => 'Milestone',
+                'url' => '/',
+            ]);
+        }
+    }
+}

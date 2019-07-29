@@ -1,5 +1,5 @@
 /*citation*/
-.wb-overlay.open{
+.wb-overlay.open.wb-popup-mid{
   height: 450px;
   width: 520px;
   overflow: auto;
@@ -377,4 +377,8 @@ ul.js-facets-checkbox-links .facet-item label {
   color: red !important;
   font-size: 14px !important;
   margin-right: 5px;
+}
+
+.comment-add {
+  display: none !important;
 }

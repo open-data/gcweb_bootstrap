@@ -23,11 +23,13 @@
     {{- content -}}
   {% endif %}
 
-  {%  if (is_admin or ('comment_moderator' in user.getroles)) %}
+  {%  if comments_recent  %}
     <h2>Recent unapproved comments</h2>
     <div class="well">{{ comments_recent }}</div>
   {% endif %}
 
-  <h2>Recent or updated content</h2>
-  <div class="well">{{ content_recent }}</div>
+  {%  if content_recent  %}
+    <h2>Recent or updated content</h2>
+    <div class="well">{{ content_recent }}</div>
+  {% endif %}
 </article>

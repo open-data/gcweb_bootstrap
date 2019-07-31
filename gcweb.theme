@@ -68,18 +68,22 @@ function gcweb_preprocess_input__button(&$variables) {
  */
 function gcweb_preprocess_user(&$variables) {
   // recent contents
-  $content_recent = Views::getView('content_recent');
-  if (is_object($content_recent)) {
-    $content_recent->setDisplay('block_1');
-    $content_recent->execute();
-    $variables['content_recent'] = $content_recent->render();
+  if (\Drupal::currentUser()->hasPermission('view any unpublished content')) {
+    $content_recent = Views::getView('content_recent');
+    if (is_object($content_recent)) {
+      $content_recent->setDisplay('block_1');
+      $content_recent->execute();
+      $variables['content_recent'] = $content_recent->render();
+    }
   }
 
   // recent comments
-  $comments_recent = Views::getView('comments_recent');
-  if (is_object($comments_recent)) {
-    $comments_recent->setDisplay('block_1');
-    $comments_recent->execute();
-    $variables['comments_recent'] = $comments_recent->render();
+  if (\Drupal::currentUser()->hasPermission('administer comments')) {
+    $comments_recent = Views::getView('comments_recent');
+    if (is_object($comments_recent)) {
+      $comments_recent->setDisplay('block_1');
+      $comments_recent->execute();
+      $variables['comments_recent'] = $comments_recent->render();
+    }
   }
 }

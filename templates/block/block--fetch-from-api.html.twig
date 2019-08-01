@@ -50,11 +50,12 @@
   'block',
   'block-' ~ configuration.provider|clean_class,
   'block-' ~ plugin_id|clean_class,
+  'well',
   'clearfix',
 ]
 %}
 
 <section{{ attributes.addClass(classes) }}>
-  <h2 class="h3">{{ 'New and updated'|t }} {{ content.field_api_type[0]['#context']['value'] }}</h2>
+  <h2 class="h3 mrgn-tp-0">{{ 'New and updated'|t }} {{ content.field_api_type[0]['#context']['value'] }}</h2>
   {{ content.body }}
 </section>

@@ -44,7 +44,11 @@
  * @see template_process()
  */
 #}
-<css-placeholder token="{{ placeholder_token|raw }}">
-<js-placeholder token="{{ placeholder_token|raw }}">
+
+<link rel="stylesheet" media="all" href="/modules/custom/voting_webform/css/rating.css">
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/gh/gjunge/rateit.js@1.1.2/scripts/rateit.css">
+<link rel="stylesheet" media="all" href="/modules/contrib/webform/css/webform.element.rating.css">
+<script src="https://cdn.jsdelivr.net/gh/gjunge/rateit.js@1.1.2/scripts/jquery.rateit.min.js"></script>
+<script src="/modules/contrib/webform/js/webform.element.rating.js?v=8.7.5"></script>
+<script src="/core/assets/vendor/jquery/jquery.min.js?v=3.2.1"></script>
 {{ page }}
-<js-bottom-placeholder token="{{ placeholder_token|raw }}">

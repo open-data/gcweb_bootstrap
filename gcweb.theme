@@ -51,17 +51,6 @@ function gcweb_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for button input
- * add an optional label to form button different from form value field
- * pass label variable to twig to add custom classes
- */
-function gcweb_preprocess_input__button(&$variables) {
-  if (!empty($variables['element']['#label'])) {
-    $variables['label'] = $variables['element']['#label'];
-  }
-}
-
-/**
  * Implements template_preprocess_user()
  * add recent contents view to the login page
  * add recent comments view to the login page

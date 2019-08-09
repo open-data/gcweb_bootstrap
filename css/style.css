@@ -382,3 +382,12 @@ ul.js-facets-checkbox-links .facet-item label {
 .comment-add {
   display: none !important;
 }
+
+.map-gallery {
+  position: relative;
+  border: 1px solid #BBB;
+  background: #eee;
+  float: left;
+  width: 100%;
+  text-align: center;
+}

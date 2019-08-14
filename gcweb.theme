@@ -23,14 +23,14 @@ function gcweb_preprocess_links__language_block(&$variables) {
  */
 function gcweb_preprocess_page(&$variables) {
   // find language
-  $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['langcode'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
   if (is_object($node = \Drupal::request()->get('node'))) {
     // redirect all users except comment moderators and admins to dataset page
     if ($node->getType() == 'external') {
       $role = \Drupal::currentUser()->getRoles();
       if (!(in_array('comment_moderator',$role)) && !(in_array('administrator',$role))) {
-        $translated_node = $node->getTranslation($lang);
+        $translated_node = $node->getTranslation($variables['langcode']);
         $path = $translated_node->get('field_url')->getValue();
         $response = new TrustedRedirectResponse($path[0]['uri']);
         $response->send();
@@ -44,10 +44,6 @@ function gcweb_preprocess_page(&$variables) {
   else {
     $variables['date_modified'] = \Drupal::service('date.formatter')->format(time(), 'custom', 'Y-m-d');
   }
-
-  // search form link
-  $variables['search_home_form'] = 'https://www.canada.ca/' . $lang . '/sr/srb.html';
-  $variables['megamenu_link'] = 'https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-' . $lang . '.html';
 }
 
 /**

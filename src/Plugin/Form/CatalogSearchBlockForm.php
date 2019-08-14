@@ -26,7 +26,8 @@ class CatalogSearchBlockForm extends FormBase {
     $form['query'] = [
       '#id' => 'query',
       '#type' => 'textfield',
-      '#title' => '',
+      '#title' => $this->t('Enter keywords to search'),
+      '#title_display' => 'invisible',
       '#size' => '50%',
       '#maxlength' => 256,
       '#default_value' => '',
@@ -42,6 +43,7 @@ class CatalogSearchBlockForm extends FormBase {
       '#type' => 'submit',
       '#value' => $this->t('Find'),
       '#id' => 'search_submit',
+      '#name' => $this->t('Find'),
       '#button_type' => 'primary',
       '#icon' => Bootstrap::glyphicon('search'),
       '#prefix' => '<span class="input-group-btn">',

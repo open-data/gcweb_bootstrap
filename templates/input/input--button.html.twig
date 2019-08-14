@@ -42,7 +42,7 @@
         <button{{ attributes.addClass(classes) }}>{{ label }}{{ icon }}</button>{{ children }}
       {% else %}
         {%  if label == 'Find' or label == 'Trouvez' %}
-          <button{{ attributes.addClass(classes) }}>{{ icon }}<span class="visible-lg-inline">{{ label }}</span></button>{{ children }}
+          <button{{ attributes.addClass(classes) }}>{{ icon }}<span class="visible-lg-inline">{{ label }}</span><span class="wb-inv">{{ label }}</span></button>{{ children }}
         {% else %}
           <button{{ attributes.addClass(classes) }}>{{ icon }}{{ label }}</button>{{ children }}
         {% endif %}

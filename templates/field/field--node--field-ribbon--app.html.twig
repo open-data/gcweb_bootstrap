@@ -44,6 +44,7 @@
     'field--name-' ~ field_name|clean_class,
     'field--type-' ~ field_type|clean_class,
     'field--label-' ~ label_display,
+    'ribbon',
     items.0.content["#plain_text"]|lower,
 ]
 %}
@@ -51,11 +52,15 @@
 {% if multiple %}
   <div{{ attributes.addClass(classes, 'field--items') }}>
     {% for item in items %}
-      <div{{ item.attributes.addClass('field--item') }}>{{ item.content }}</div>
+      <div{{ item.attributes.addClass('field--item') }}>
+        <span>{{ item.content }}</span>
+      </div>
     {% endfor %}
   </div>
 {% else %}
   {% for item in items %}
-    <div{{ attributes.addClass(classes, 'field--item') }}>{{ item.content }}</div>
+    <div{{ attributes.addClass(classes, 'field--item') }}>
+      <span>{{ item.content }}</span>
+    </div>
   {% endfor %}
 {% endif %}

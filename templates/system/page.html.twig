@@ -69,14 +69,14 @@
         </section>
         <div class="row">
           <div class="brand col-xs-5 col-md-4">
-            <a href="https://www.canada.ca/en.html"><img alt="" src="/libraries/theme-gcweb/assets/sig-blk-en.svg"><span class="wb-inv"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span></a>
+            <a href="https://www.canada.ca/{{ langcode }}.html"><img alt="" src="/libraries/theme-gcweb/assets/sig-blk-{{ langcode }}.svg"><span class="wb-inv"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span></a>
           </div>
           <section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
             <h2>{{ 'Search'|t }}</h2>
-              <form name="cse-search-box" class="form-inline" role="search" action="{{ search_home_form }}" method="get">
+              <form name="cse-search-box" class="form-inline" role="search" action="https://www.canada.ca/{{ langcode }}/sr/srb.html" method="get">
               <div class="form-group">
-                <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="{{ 'Search Canada.ca'|t }}">
                 <label for="wb-srch-q" class="wb-inv">{{ 'Search Canada.ca'|t }}</label>
+                <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="{{ 'Search Canada.ca'|t }}">
                 <datalist id="wb-srch-q-ac">
                 </datalist>
               </div>
@@ -92,7 +92,7 @@
         <div class="{{ container }}">
           <h2 class="wb-inv">Menu</h2>
           <button type="button" aria-haspopup="true" aria-expanded="false">Menu<span class="wb-inv"> principal</span> <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
-            <ul role="menu" aria-orientation="vertical" data-ajax-replace="{{ megamenu_link }}">
+            <ul role="menu" aria-orientation="vertical" data-ajax-replace="https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-{{ langcode }}.html">
             </ul>
         </div>
       </nav>

@@ -63,7 +63,7 @@
     </div>
   {% else %}
     {% for item in items %}
-      <div{{ attributes.addClass(classes, 'field--item') }}>{{ item.content }}</div>
+      <div{{ attributes.addClass(classes, 'field--item') }}>{{ item.content['#plain_text']|t }}</div>
     {% endfor %}
   {% endif %}
 {% else %}

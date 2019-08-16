@@ -434,6 +434,26 @@ ul.js-facets-checkbox-links .facet-item label {
   border-right-color: #1e5799;
   border-top-color: #1e5799; }
 
+.device-format{
+  display: inline-block;
+}
+.device-format-icon {
+  display: inline-block;
+  font-size: larger;
+}
+.device-format-icon-fa-globe {
+  color: cadetblue;
+}
+.device-format-icon-fa-app-store {
+  color: dodgerblue;
+}
+.device-format-icon-fa-android {
+  color: yellowgreen;
+}
+.device-format-icon-fa-blackberry {
+  color: black;
+}
+
 /* id specific styles */
 #edit-field-subject-target-id{
   width: 100px;

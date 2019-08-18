@@ -48,11 +48,7 @@
   ]
   %}
   {% if view.storage.id == 'suggested_datasets' %}
-    {% if (language == 'fr') %}
-    <table{{ attributes.addClass(classes).setAttribute('data-wb-tables', '{ "lengthMenu": [ [10, -1], [10, "Tout"] ], "columnDefs": [ { "orderData": 4, "targets": 4 } ], "order": [[ 4, "desc" ]] }') }}>
-    {% else %}
-    <table{{ attributes.addClass(classes).setAttribute('data-wb-tables', '{ "lengthMenu": [ [10, -1], [10, "All"] ], "columnDefs": [ { "orderData": 4, "targets": 4 } ], "order": [[ 4, "desc" ]] }') }}>
-    {% endif %}
+    <table{{ attributes.addClass(classes).setAttribute('data-wb-tables', '{ "columnDefs": [ { "orderData": 4, "targets": 4 } ], "order": [[ 4, "desc" ]] }') }}>
   {% else %}
       <table{{ attributes.addClass(classes) }}>
   {% endif %}

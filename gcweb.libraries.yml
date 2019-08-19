@@ -18,3 +18,8 @@ global-styling:
     /libraries/theme-gcweb/js/theme.min.js: { preprocess: false, minified: false }
   dependencies:
     - core/jquery
+
+highlight:
+  version: VERSION
+  js:
+    js/highlight.js: {}

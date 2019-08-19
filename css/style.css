@@ -274,7 +274,7 @@ mark {
   overflow-y: scroll;
 }
 
-.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+.thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
   margin: auto;
 }
 
@@ -457,4 +457,14 @@ ul.js-facets-checkbox-links .facet-item label {
 /* id specific styles */
 #edit-field-subject-target-id{
   width: 100px;
+}
+
+/* blog */
+.blog-striped {
+  border: 1px solid #BBB;
+  padding: 15px;
+}
+
+.blog-striped:nth-of-type(odd) {
+  background: #eee;
 }

@@ -72,3 +72,14 @@ function gcweb_preprocess_user(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_node()
+ * attach highlight library to blog contents
+ */
+function gcweb_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  if ($node->getType() === 'landing_page') {
+    $variables['#attached']['library'][] = 'gcweb/highlight';
+  }
+}

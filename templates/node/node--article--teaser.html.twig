@@ -83,7 +83,6 @@
   'mrgn-tp-0',
 ]
 %}
-
 <article{{ attributes.addClass(classes) }}>
   <div class="row">
     <div class="col-lg-10 col-md-9 col-sm-9">
@@ -100,7 +99,7 @@
       </p>
     </div>
     <div class="col-lg-2 col-md-3 col-sm-3">
-      <a href="{{ url }}">{{ content.field_media }}</a>
+      <a href="{{ url }}">{{ content.field_media }}{{ content.field_blog_author_name }}</a>
     </div>
   </div>
 </article>

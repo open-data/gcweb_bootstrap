@@ -479,3 +479,7 @@ ul.js-facets-checkbox-links .facet-item label {
 .blog-striped:hover {
   box-shadow: 0 0 20px rgba(33,33,33,.2);
 }
+
+[class*=colcount-]>li {
+  margin-left: 0 !important;
+}

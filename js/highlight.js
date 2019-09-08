@@ -14,9 +14,9 @@
     attach: function (context, settings) {
       $( document ).ajaxComplete(function() {
         let keyword = $("input[id^='edit-combine']").val();
-        // remove non-alphanumeric characters
-        keyword = keyword.replace(/[^a-z0-9]/gi,' ');
         if (keyword) {
+          // remove non-alphanumeric characters
+          keyword = keyword.replace(/[^a-z0-9]/gi,' ');
           let rows = document.getElementsByClassName("views-row");
           let rgxp = new RegExp(keyword, 'ig');
           // capitalize to title case

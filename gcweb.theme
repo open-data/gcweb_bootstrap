@@ -83,3 +83,9 @@ function gcweb_preprocess_node(&$variables) {
     $variables['#attached']['library'][] = 'gcweb/highlight';
   }
 }
+/**
+ *
+ */
+function gcweb_preprocess_pager(&$variables){
+    $variables['heading_id'] = \Drupal\Component\Utility\Html::getUniqueId('pagination-heading');
+}

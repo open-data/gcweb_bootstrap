@@ -8,7 +8,7 @@
   'use strict';
 
   /**
-   * Text highlight
+   * Text highlight for pages reloading using AJAX
    */
   Drupal.behaviors.Highlight = {
     attach: function (context, settings) {
@@ -34,6 +34,38 @@
             $(this).find("h2").find("a").text("");
             $(this).find("h2").find("a").append(title.replace(rgxp, repl));
           });
+        }
+      });
+    }
+  };
+
+  /**
+   * Text highlight for Proactive Disclosure search pages not reloaded using AJAX
+   */
+  Drupal.behaviors.SearchHighlight = {
+    attach: function (context, settings) {
+      $( document ).ready(function() {
+        let keyword = $("input[id^='edit-search-api-fulltext']").val();
+        if (keyword) {
+          // remove non-alphanumeric characters
+          keyword = keyword.replace(/[^a-zA-ZÀ-ú0-9-]/gi,' ');
+          let rows = document.getElementsByClassName("views-row");
+          let rgxp = new RegExp(keyword, 'ig');
+
+          // highlight all elements with class hgl
+          $(rows).each(function() {
+            let excerpt = $(this).find(".hgl");
+            $(excerpt).each(function () {
+              let str = $(this).text();
+              let key = new RegExp('\\b' + keyword + '\\b',"gi");
+              if (str.match(key)) {
+                let repl = '<mark>' + str.match(key)[0] + '</mark>';
+                let val = $(this).text().replace(rgxp, repl);
+                $(this).text("");
+                $(this).append(val);
+              }
+            })
+          })
         }
       });
     }

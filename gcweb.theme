@@ -44,6 +44,11 @@ function gcweb_preprocess_page(&$variables) {
   else {
     $variables['date_modified'] = \Drupal::service('date.formatter')->format(time(), 'custom', 'Y-m-d');
   }
+
+  // feedback link
+  $variables['feedback_link'] = $variables['langcode'] == 'fr'
+    ? '/fr/formulaire/faites-nous-part-de-vos-commentaires'
+    : '/forms/contact-us';
 }
 
 /**

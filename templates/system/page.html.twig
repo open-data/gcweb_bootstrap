@@ -116,15 +116,7 @@
       {% endif %}
 
       {# Content #}
-      {%
-        set content_classes = [
-        page.sidebar_first and page.sidebar_second ? 'col-md-6 col-md-push-3',
-        page.sidebar_first and page.sidebar_second is empty ? 'col-md-9 col-md-push-3',
-        page.sidebar_second and page.sidebar_first is empty ? 'col-md-9',
-        page.sidebar_first is empty and page.sidebar_second is empty ? 'col-md-12'
-      ]
-      %}
-      <main role="main" property="mainContentOfPage" {{ content_attributes.addClass(content_classes, 'main-container', container, 'js-quickedit-main-content') }}>
+      <main role="main" property="mainContentOfPage" {{ content_attributes.addClass('col-md-12', 'main-container', container, 'js-quickedit-main-content') }}>
 
         {# Header #}
         {% if page.header %}
@@ -139,13 +131,6 @@
           {% if action_links %}
             {% block action_links %}
               <ul class="action-links">{{ action_links }}</ul>
-            {% endblock %}
-          {% endif %}
-
-          {# Help #}
-          {% if page.help %}
-            {% block help %}
-              {{ page.help }}
             {% endblock %}
           {% endif %}
 
@@ -178,41 +163,6 @@
         </section>
 
       </main>
-
-      {# Sidebar First #}
-      {%
-        set sidebar_first_classes = [
-        page.sidebar_first and page.sidebar_second ? 'col-md-3 col-md-pull-6',
-        page.sidebar_first and page.sidebar_second is empty ? 'col-md-3 col-md-pull-9',
-        page.sidebar_second and page.sidebar_first is empty ? 'col-md-3 col-md-pull-9'
-      ]
-      %}
-      {# Sidebar First #}
-      {% if page.sidebar_first %}
-        {% block sidebar_first %}
-          <nav{{ attributes.addClass(sidebar_first_classes) }}>
-            {{ page.sidebar_first }}
-          </nav>
-        {% endblock %}
-      {% endif %}
-
-      {# Sidebar Second #}
-      {%
-        set sidebar_second_classes = [
-        page.sidebar_first and page.sidebar_second ? 'col-md-3',
-        page.sidebar_first and page.sidebar_second is empty ? 'col-md-3',
-        page.sidebar_second and page.sidebar_first is empty ? 'col-md-3'
-      ]
-      %}
-      {# Sidebar Second #}
-      {% if page.sidebar_second %}
-        {% block sidebar_second %}
-
-          <nav{{ attributes.removeClass(sidebar_first_classes).addClass(sidebar_second_classes) }}>
-            {{ page.sidebar_second }}
-          </nav>
-        {% endblock %}
-      {% endif %}
 
     </div>
   </div>

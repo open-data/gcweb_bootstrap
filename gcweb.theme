@@ -26,15 +26,12 @@ function gcweb_preprocess_page(&$variables) {
   $variables['langcode'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
   if (is_object($node = \Drupal::request()->get('node'))) {
-    // redirect all users except comment moderators and admins to dataset page
+    // redirect to dataset page
     if ($node->getType() == 'external') {
-      $role = \Drupal::currentUser()->getRoles();
-      if (!(in_array('comment_moderator',$role)) && !(in_array('administrator',$role))) {
-        $translated_node = $node->getTranslation($variables['langcode']);
-        $path = $translated_node->get('field_url')->getValue();
-        $response = new TrustedRedirectResponse($path[0]['uri']);
-        $response->send();
-      }
+      $translated_node = $node->getTranslation($variables['langcode']);
+      $path = $translated_node->get('field_url')->getValue();
+      $response = new TrustedRedirectResponse($path[0]['uri']);
+      $response->send();
     }
 
     // date modified

@@ -45,18 +45,18 @@
  * @see template_process()
  */
 #}
-{% if language == plugin_id|split('_')|last %}
-  {%
-    set classes = [
-      'panel',
-      'panel-default',
-      'block',
-      'block-' ~ configuration.provider|clean_class,
-      'block-' ~ plugin_id|clean_class,
-      'mrgn-bttm-0',
-      'clearfix',
-    ]
-  %}
+{%
+  set classes = [
+  'panel',
+  'panel-default',
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  'mrgn-bttm-0',
+  'clearfix',
+]
+%}
+{% if is_layout %}
   <details{{ attributes.addClass(classes) }}{% if  content[0]['#facet'].ActiveItems %} open="open"{% endif %}>
     {{ title_prefix }}
     {% if label %}
@@ -68,10 +68,28 @@
     {% endif %}
     {{ title_suffix }}
 
-    {% block content %}
-      <div>
-        {{ content }}
-      </div>
-    {% endblock %}
+    <div>
+      {{ content }}
+    </div>
   </details>
+{% else %}
+  {% if language == plugin_id|split('_')|last %}
+    <details{{ attributes.addClass(classes) }}{% if  content[0]['#facet'].ActiveItems %} open="open"{% endif %}>
+      {{ title_prefix }}
+      {% if label %}
+        <summary class="panel-heading">
+          <h2{{ title_attributes.addClass('panel-title') }}>
+            {{ label }}
+          </h2>
+        </summary>
+      {% endif %}
+      {{ title_suffix }}
+
+      {% block content %}
+        <div>
+          {{ content }}
+        </div>
+      {% endblock %}
+    </details>
+  {% endif %}
 {% endif %}

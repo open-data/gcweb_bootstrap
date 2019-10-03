@@ -11,7 +11,7 @@ global-styling:
 # Library for loading WET-BOEW CDTS template scripts
 wet-load:
   js:
-    js/wet-load.js: {}
+    js/wet-load.min.js: { minified: true }
   dependencies:
     - core/jquery
 

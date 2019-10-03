@@ -20,21 +20,27 @@
 
         // load CDTS Top Reference
         let defTop = document.getElementById("def-top");
-        defTop.outerHTML = wet.builder.top({
-          "lngLinks": false,
-          "breadcrumbs": false
-        });
+        if (defTop) {
+          defTop.outerHTML = wet.builder.top({
+            "lngLinks": false,
+            "breadcrumbs": false
+          });
+        }
 
         // load CDTS PreFooter Reference
         let defPreFooter = document.getElementById("def-preFooter");
-        defPreFooter.outerHTML = wet.builder.preFooter({
-          "showFeedback" : drupalSettings.feedback_link,
-          "dateModified": drupalSettings.date_modified
-        });
+        if (defPreFooter) {
+          defPreFooter.outerHTML = wet.builder.preFooter({
+            "showFeedback" : drupalSettings.feedback_link,
+            "dateModified": drupalSettings.date_modified
+          });
+        }
 
         // load CDTS Footer refernce
         let defFooter = document.getElementById("def-footer");
-        defFooter.outerHTML = wet.builder.footer();
+        if (defFooter) {
+          defFooter.outerHTML = wet.builder.footer();
+        }
       });
     }
   };

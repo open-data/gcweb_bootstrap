@@ -1,5 +1,5 @@
 {
-    "name": "drupal/gcweb",
+    "name": "opengov/gcweb",
     "description": "Theme implementation using WET-BOEW",
     "type": "project",
     "license": "GPL-2.0-or-later",

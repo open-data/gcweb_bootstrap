@@ -13,7 +13,7 @@ to adhere to common look and feel with Canada.ca.
 ### Installation
 - Use composer to install theme
 ```sh
-composer require drupal/gcweb
+composer require opengov/gcweb
 ```
 
 ### Configuration

@@ -1,2 +1,89 @@
 {
+    "name": "opengov/gcweb",
+    "description": "Theme implementation using WET-BOEW",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type"    : "package",
+            "package" : {
+                "name"    : "wet-boew/wet-boew",
+                "version" : "v4.0.31",
+                "type"    : "drupal-library",
+                "dist"    : {
+                    "url"  : "https://github.com/wet-boew/wet-boew-cdn/archive/v4.0.31.tar.gz",
+                    "type" : "tar"
+                },
+                "source"  : {
+                    "url"       : "https://github.com/wet-boew/wet-boew-cdn.git",
+                    "type"      : "git",
+                    "reference" : "v4.0.31"
+                }
+            }
+        },
+        {
+            "type"    : "package",
+            "package" : {
+                "name"    : "wet-boew/theme-gcweb",
+                "version" : "v5.1",
+                "type"    : "drupal-library",
+                "dist"    : {
+                    "url"  : "https://github.com/wet-boew/themes-cdn/archive/v5.1-gcweb.tar.gz",
+                    "type" : "tar"
+                },
+                "source"  : {
+                    "url"       : "https://github.com/wet-boew/themes-cdn.git",
+                    "type"      : "git",
+                    "reference" : "v5.1-gcweb"
+                }
+            }
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6.5",
+        "drupal/bootstrap": "3.20.0",
+        "drupal/core": "^8",
+        "wet-boew/theme-gcweb": "5.1",
+        "wet-boew/wet-boew": "v4.0.31"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "composer-exit-on-patch-failure": false,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "patches": { },
+        "installer-types": [
+            "npm-asset",
+            "bower-asset"
+        ],
+        "installer-paths": {
+            "html/core": [
+                "type:drupal-core"
+            ],
+            "html/libraries/{$name}": [
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset"
+            ],
+            "html/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "html/themes/custom/{$name}": [
+                "drupal/gcweb"
+            ]
+        },
+        "drupal-scaffold": {
+            "initial": {
+                ".editorconfig": "../.editorconfig",
+                ".gitattributes": "../.gitattributes"
+            }
+        }
+    }
 }

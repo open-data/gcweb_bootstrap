@@ -9,14 +9,6 @@ use Drupal\views\Views;
  */
 
 /**
- * Implements hook_preprocess_HOOK() for links--language-block.html.twig
- * provide language variable to the twig template
- */
-function gcweb_preprocess_links__language_block(&$variables) {
-  $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
-}
-
-/**
  * Implements hook_preprocess_HOOK() for page.html.twig
  * redirect non-admin users of external pages to the external page
  * setup variables: date modified, canada.ca search form link and mega menu link for twig template
@@ -49,6 +41,66 @@ function gcweb_preprocess_page(&$variables) {
 }
 
 /**
+ * Implements hook_page_attachments_alter()
+ * attach libraries for WET-BOEW
+ * attach highlight library
+ */
+function gcweb_page_attachments_alter(&$page) {
+  $langCode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+  // specify the version for WET-BOEW CDTS
+  $gcweb_version = 'v4_0_31';
+  $gcweb_url = 'https://www.canada.ca/etc/designs/canada/cdts/gcweb/' . $gcweb_version;
+
+  // CDTS - Load template scripts
+  $page['#attached']['html_head'][] = [
+    [
+      '#type' => 'html_tag',
+      '#tag' => 'script',
+      '#attributes' => [ 'src' => $gcweb_url . '/cdts/compiled/soyutils.js'],
+    ],
+    'gcweb_utils',
+  ];
+
+  $page['#attached']['html_head'][] = [
+    [
+      '#type' => 'html_tag',
+      '#tag' => 'script',
+      '#attributes' => [ 'src' => $gcweb_url . '/cdts/compiled/wet-' . $langCode . '.js'],
+    ],
+    'gcweb_wet',
+  ];
+
+  // date modified
+  $time = is_object($node = \Drupal::request()->get('node')) ? $node->getChangedTime() : time();
+  $page['#attached']['drupalSettings']['date_modified'] = \Drupal::service('date.formatter')->format($time, 'custom', 'Y-m-d');;
+
+  // feedback link
+  $page['#attached']['drupalSettings']['feedback_link'] = $langCode == 'fr'
+    ? '/fr/formulaire/faites-nous-part-de-vos-commentaires'
+    : '/forms/contact-us';
+
+  // Load WET-BOEW libraries
+  $page['#attached']['library'][] = 'gcweb/wet-boew';
+  $page['#attached']['library'][] = 'gcweb/wet-load';
+
+  // Load highlight library for Langing pages
+  if (is_object($node = \Drupal::request()->get('node'))) {
+    if ($node->getType() === 'landing_page') {
+      $page['#attached']['library'][] = 'gcweb/highlight';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for links--language-block.html.twig
+ * provide language variable to the twig template
+ */
+function gcweb_preprocess_links__language_block(&$variables) {
+  $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+}
+
+/**
  * Implements template_preprocess_user()
  * add recent contents view to the login page
  * add recent comments view to the login page
@@ -76,18 +128,9 @@ function gcweb_preprocess_user(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_node()
- * attach highlight library to blog contents
- */
-function gcweb_preprocess_node(&$variables) {
-  $node = $variables['node'];
-  if ($node->getType() === 'landing_page') {
-    $variables['#attached']['library'][] = 'gcweb/highlight';
-  }
-}
-/**
- *
+ * Implements template_preprocess_pager
+ * SiteImprove enhancement
  */
 function gcweb_preprocess_pager(&$variables){
-    $variables['heading_id'] = \Drupal\Component\Utility\Html::getUniqueId('pagination-heading');
+  $variables['heading_id'] = \Drupal\Component\Utility\Html::getUniqueId('pagination-heading');
 }

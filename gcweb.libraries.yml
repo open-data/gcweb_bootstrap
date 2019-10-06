@@ -1,4 +1,22 @@
+# Library for the theme
 global-styling:
+  css:
+    theme:
+      css/style.min.css: { minified: true, attributes: { defer: true, async: true } }
+  js:
+    js/citation.min.js: { minified: true, attributes: { defer: true, async: true } }
+  dependencies:
+    - core/jquery
+
+# Library for loading WET-BOEW CDTS template scripts
+wet-load:
+  js:
+    js/wet-load.min.js: { minified: true }
+  dependencies:
+    - core/jquery
+
+# Library for WET-BOEW assets
+wet-boew:
   css:
     theme:
       /libraries/theme-gcweb/css/theme.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true, attributes: { defer: true, async: true } }
@@ -9,16 +27,15 @@ global-styling:
       /libraries/theme-gcweb/css/small-component.min.css: { minified: true, attributes: { defer: true, async: true } }
       /libraries/theme-gcweb/css/messages.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true, attributes: { defer: true, async: true } }
       /libraries/theme-gcweb/css/messages-ie.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true, attributes: { defer: true, async: true } }
-      css/style.min.css: { minified: true, attributes: { defer: true, async: true } }
   js:
     /libraries/wet-boew/js/ie8-wet-boew.min.js: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: false, weight: -1 }
     /libraries/wet-boew/js/wet-boew.min.js: { preprocess: false, browsers: { IE: 'gte IE 9', '!IE': true }, minified: false, weight: -1 }
     /libraries/wet-boew/js/ie8-wet-boew2.min.js: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: false, weight: -1 }
     /libraries/theme-gcweb/js/theme.min.js: { preprocess: false, minified: false }
-    js/citation.min.js: { minified: true, attributes: { defer: true, async: true } }
   dependencies:
     - core/jquery
 
+# Library for highlighting
 highlight:
   version: VERSION
   js:

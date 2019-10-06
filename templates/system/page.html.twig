@@ -55,52 +55,86 @@
  */
 #}
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
+{% set main_classes = [
+    'col-md-12',
+    'main-container',
+    container,
+    'js-quickedit-main-content',
+  ]
+%}
 
-{# Navbar #}
-{% if page.navigation or page.navigation_collapsible %}
-  {% block navbar %}
+{# Language Selection #}
+<section id="wb-lng" class="text-right">
+  <div class={{ container }}>
+    <h2 class="wb-inv">Language selection</h2>
+    {{ page.language_toggle }}
+  </div>
+</section>
 
-    <header role="banner">
-      <div id="wb-bnr" class="{{ container }}" >
+{# CDTS TOP REFERENCE #}
+<div id="def-top">
+  {# Write closure fall-back #}
 
-        <section id="wb-lng" class="text-right">
-          <h2 class="wb-inv">Language selection</h2>
-          {{ page.language_toggle }}
-        </section>
-        <div class="row">
-          <div class="brand col-xs-5 col-md-4">
-            <a href="https://www.canada.ca/{{ langcode }}.html"><img alt="" src="/libraries/theme-gcweb/assets/sig-blk-{{ langcode }}.svg"><span class="wb-inv"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span></a>
+  {# Basic HTML mode and progressive enhancement #}
+  <ul id="wb-tphp">
+    <li class="wb-slc">
+      <a class="wb-sl" href="#main-content">{{ 'Skip to main content'|t }}</a>
+    </li>
+    <li class="wb-slc visible-sm visible-md visible-lg">
+      <a class="wb-sl" href="#wb-info">{{ 'Skip to "About government"'|t }}</a>
+    </li>
+    <li class="wb-slc">
+      <a class="wb-sl" rel="alternate" href="?wbdisable=true">{{ 'Switch to basic HTML version'|t }}</a></li>
+  </ul>
+
+  {% if page.navigation or page.navigation_collapsible %}
+
+    {# Navbar #}
+    {% block navbar %}
+      <header role="banner">
+        <div id="wb-bnr" class="{{ container }}" >
+          <div class="row">
+            <div class="brand col-xs-5 col-md-4">
+              <a href="https://www.canada.ca/{{ langcode }}.html"><img alt="" src="/libraries/theme-gcweb/assets/sig-blk-{{ langcode }}.svg"><span class="wb-inv"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span></a>
+            </div>
+            <section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
+              <h2>{{ 'Search'|t }}</h2>
+                <form name="cse-search-box" class="form-inline" role="search" action="https://www.canada.ca/{{ langcode }}/sr/srb.html" method="get">
+                <div class="form-group">
+                  <label for="wb-srch-q" class="wb-inv">{{ 'Search Canada.ca'|t }}</label>
+                  <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="{{ 'Search Canada.ca'|t }}">
+                  <datalist id="wb-srch-q-ac">
+                  </datalist>
+                </div>
+                <div class="form-group submit">
+                  <button type="submit" id="wb-srch-sub" name="wb-srch-sub" class="btn btn-primary btn-small"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+                </div>
+              </form>
+            </section>
           </div>
-          <section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
-            <h2>{{ 'Search'|t }}</h2>
-              <form name="cse-search-box" class="form-inline" role="search" action="https://www.canada.ca/{{ langcode }}/sr/srb.html" method="get">
-              <div class="form-group">
-                <label for="wb-srch-q" class="wb-inv">{{ 'Search Canada.ca'|t }}</label>
-                <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="{{ 'Search Canada.ca'|t }}">
-                <datalist id="wb-srch-q-ac">
-                </datalist>
-              </div>
-              <div class="form-group submit">
-                <button type="submit" id="wb-srch-sub" name="wb-srch-sub" class="btn btn-primary btn-small"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
-              </div>
-            </form>
-          </section>
         </div>
-      </div>
 
-      <nav class="gcweb-menu" typeof="SiteNavigationElement">
-        <div class="{{ container }}">
-          <h2 class="wb-inv">Menu</h2>
-          <button type="button" aria-haspopup="true" aria-expanded="false">Menu<span class="wb-inv"> principal</span> <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
-            <ul role="menu" aria-orientation="vertical" data-ajax-replace="https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-{{ langcode }}.html">
-            </ul>
-        </div>
-      </nav>
+        {# Menu #}
+        <nav class="gcweb-menu" typeof="SiteNavigationElement">
+          <div class="{{ container }}">
+            <h2 class="wb-inv">Menu</h2>
+            <button type="button" aria-haspopup="true" aria-expanded="false">Menu<span class="wb-inv"> principal</span> <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+              <ul role="menu" aria-orientation="vertical" data-ajax-replace="https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-{{ langcode }}.html">
+              </ul>
+          </div>
+        </nav>
+      </header>
+    {% endblock %}
+  {% endif %}
+</div>
 
-      {{ page.breadcrumb }}
-    </header>
+{# Breadcrumb #}
+{% if page.breadcrumb %}
+  {% block breadcrumb  %}
+    <div class="{{ container }}">{{ page.breadcrumb }}</div>
   {% endblock %}
 {% endif %}
+
 
 {# Main #}
 {% block main %}
@@ -116,7 +150,7 @@
       {% endif %}
 
       {# Content #}
-      <main role="main" property="mainContentOfPage" {{ content_attributes.addClass('col-md-12', 'main-container', container, 'js-quickedit-main-content') }}>
+      <main role="main" property="mainContentOfPage" {{ content_attributes.addClass(main_classes) }}>
 
         {# Header #}
         {% if page.header %}
@@ -126,7 +160,6 @@
         {% endif %}
 
         <section>
-
           {# Action Links #}
           {% if action_links %}
             {% block action_links %}
@@ -138,26 +171,31 @@
           {% block content %}
             <a id="main-content"></a>
             {{ page.content }}
-            <div class="pagedetails">
-              <div class="row">
-                <div class="col-sm-4 col-md-3 col-lg-3">
-                  <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><p>
-                      <a class="btn btn-default btn-block" href="{{ feedback_link }}">
-                        <span class="glyphicon glyphicon-comment mrgn-rght-sm">&nbsp;</span>
-                          {{ 'Feedback'|t }}
-                        <span class="wb-inv">{{ 'About the Open Government website'|t }}</span>
-                      </a>
-                    </p>
+
+            {# CDTS PREFOOTER REFERENCE #}
+            <div id="def-preFooter">
+              {# Write closure fall-back #}
+              <div class="pagedetails">
+                <div class="row">
+                  <div class="col-sm-4 col-md-3 col-lg-3">
+                    <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><p>
+                        <a class="btn btn-default btn-block" href="{{ feedback_link }}">
+                          <span class="glyphicon glyphicon-comment mrgn-rght-sm">&nbsp;</span>
+                            {{ 'Feedback'|t }}
+                          <span class="wb-inv">{{ 'About the Open Government website'|t }}</span>
+                        </a>
+                      </p>
+                    </div>
                   </div>
+                  {# Share button #}
+                  <div class="wb-share col-sm-4 col-md-3 col-sm-offset-4 col-md-offset-6 col-lg-offset-6" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div>
+                  {# END Share button #}
                 </div>
-                <!-- Share button -->
-                <div class="wb-share col-sm-4 col-md-3 col-sm-offset-4 col-md-offset-6 col-lg-offset-6" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div>
-                <!-- END Share button -->
+                <dl id="wb-dtmd">
+                  <dt>{{ 'Date modified:'|t }}</dt>
+                  <dd><time property="dateModified">{{ date_modified }}</time></dd>
+                </dl>
               </div>
-              <dl id="wb-dtmd">
-                <dt>{{ 'Date modified:'|t }}</dt>
-                <dd><time property="dateModified">{{ date_modified }}</time></dd>
-              </dl>
             </div>
           {% endblock %}
         </section>
@@ -169,25 +207,29 @@
 
 {% endblock %}
 
-{% if page.footer %}
-  {% block footer %}
-    <footer id="wb-info">
-      <div class="landscape">
-          {{ page.footer }}
-      </div>
-      <div class="brand">
-        <div class="{{ container }}">
-          <div class="row">
-            {{ page.branding }}
-            <div class="col-xs-6 visible-sm visible-xs tofpg">
-              <a href="#wb-cont">{{ 'Top of page'|t }} <span class="glyphicon glyphicon-chevron-up"></span></a>
-            </div>
-            <div class="col-xs-6 col-md-2 text-right">
-              <object type="image/svg+xml" tabindex="-1" role="img" data="/libraries/theme-gcweb/assets/wmms-blk.svg" aria-label="Symbol of the Government of Canada"></object>
+{# CDTS FOOTER REFERENCE #}
+<div id="def-footer">
+  {# Write closure fall-back #}
+  {% if page.footer %}
+    {% block footer %}
+      <footer id="wb-info">
+        <div class="landscape">
+            {{ page.footer }}
+        </div>
+        <div class="brand">
+          <div class="{{ container }}">
+            <div class="row">
+              {{ page.branding }}
+              <div class="col-xs-6 visible-sm visible-xs tofpg">
+                <a href="#wb-cont">{{ 'Top of page'|t }} <span class="glyphicon glyphicon-chevron-up"></span></a>
+              </div>
+              <div class="col-xs-6 col-md-2 text-right">
+                <object type="image/svg+xml" tabindex="-1" role="img" data="/libraries/theme-gcweb/assets/wmms-blk.svg" aria-label="Symbol of the Government of Canada"></object>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </footer>
-  {% endblock %}
-{% endif %}
+      </footer>
+    {% endblock %}
+  {% endif %}
+</div>

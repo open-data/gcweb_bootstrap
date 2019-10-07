@@ -72,9 +72,6 @@
                 "type:npm-asset",
                 "type:bower-asset"
             ],
-            "html/themes/custom/{$name}": [
-                "opengov/gcweb"
-            ],
             "html/themes/contrib/{$name}": [
                 "type:drupal-theme"
             ]

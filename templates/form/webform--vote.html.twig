@@ -37,7 +37,7 @@
 <p class="bg-info">
   {% if vote_count is not empty %}
     {% if vote_count != 0 %}
-      {{ 'This dataset is rated by @votecount with an average rating of '|t  ({ '@votecount': vote_count }) }}
+      {{ 'This dataset is rated @votecount time(s) with an average rating of '|t  ({ '@votecount': vote_count }) }}
       <strong>
         {% if vote_average <= 1 %}
           {{ 'Need improvement'|t }}

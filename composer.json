@@ -72,11 +72,11 @@
                 "type:npm-asset",
                 "type:bower-asset"
             ],
-            "html/themes/contrib/{$name}": [
-                "type:drupal-theme"
-            ],
             "html/themes/custom/{$name}": [
                 "opengov/gcweb"
+            ],
+            "html/themes/contrib/{$name}": [
+                "type:drupal-theme"
             ]
         },
         "drupal-scaffold": {

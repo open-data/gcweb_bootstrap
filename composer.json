@@ -1,7 +1,7 @@
 {
     "name": "opengov/gcweb",
     "description": "Theme implementation using WET-BOEW",
-    "type": "project",
+    "type": "drupal-theme",
     "license": "GPL-2.0-or-later",
     "repositories": [
         {

@@ -76,7 +76,7 @@
                 "type:drupal-theme"
             ],
             "html/themes/custom/{$name}": [
-                "drupal/gcweb"
+                "opengov/gcweb"
             ]
         },
         "drupal-scaffold": {

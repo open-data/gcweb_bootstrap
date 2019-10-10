@@ -9,6 +9,51 @@ as base theme for faster and easier web development.
 The theme utilizes WET-BOEW Centrally Deployed Templates Solution (CDTS) 
 to adhere to common look and feel with Canada.ca.
 
+### Requirements
+For composer to gather libraries, define the following under repository section of composer:
+```sh
+"repositories": [
+    {
+        "type": "composer",
+        "url": "https://packages.drupal.org/8"
+    },
+    {
+        "type"    : "package",
+        "package" : {
+            "name"    : "wet-boew/wet-boew",
+            "version" : "v4.0.31",
+            "type"    : "drupal-library",
+            "dist"    : {
+                "url"  : "https://github.com/wet-boew/wet-boew-cdn/archive/v4.0.31.tar.gz",
+                "type" : "tar"
+            },
+            "source"  : {
+                "url"       : "https://github.com/wet-boew/wet-boew-cdn.git",
+                "type"      : "git",
+                "reference" : "v4.0.31"
+            }
+        }
+    },
+    {
+        "type"    : "package",
+        "package" : {
+            "name"    : "wet-boew/theme-gcweb",
+            "version" : "v5.1",
+            "type"    : "drupal-library",
+            "dist"    : {
+                "url"  : "https://github.com/wet-boew/themes-cdn/archive/v5.1-gcweb.tar.gz",
+                "type" : "tar"
+            },
+            "source"  : {
+                "url"       : "https://github.com/wet-boew/themes-cdn.git",
+                "type"      : "git",
+                "reference" : "v5.1-gcweb"
+            }
+        }
+    }
+],
+```
+
 
 ### Installation
 - Use composer to install theme

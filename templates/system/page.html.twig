@@ -208,7 +208,7 @@
 {% endblock %}
 
 {# CDTS FOOTER REFERENCE #}
-<div id="def-footer">
+<div {%  if  not custom_footer %}id="def-footer"{% endif %}>
   {# Write closure fall-back #}
   {% if page.footer %}
     {% block footer %}

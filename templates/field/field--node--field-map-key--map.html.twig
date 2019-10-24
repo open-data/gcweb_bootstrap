@@ -39,7 +39,7 @@
  */
 #}
 
-{% set url = '/modules/custom/map/assets/config.rcs.' ~ language ~ '-CA.json' %}
+{% set url = '/profiles/og/modules/custom/map/assets/config.rcs.' ~ language ~ '-CA.json' %}
 {% set rcsLang = '["' ~ language ~ '-CA' ~ '"]' %}
 
 <div{{ attributes.setAttribute('is', 'rv-map') }} {{ attributes.addClass('fgpMap') }} {{ attributes.setAttribute('id', 'open-data-map') }} {{ attributes.setAttribute('rv-config', url) }}  {{ attributes.setAttribute('rv-langs', rcsLang) }} {{ attributes.setAttribute('rv-restore-bookmark', 'bookmark') }} {{ attributes.setAttribute('rv-service-endpoint', 'https://rcs.open.canada.ca/') }} {{ attributes.setAttribute('data-rv-wait', 'true') }}>

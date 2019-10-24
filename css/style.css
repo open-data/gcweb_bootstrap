@@ -483,3 +483,30 @@ ul.js-facets-checkbox-links .facet-item label {
 [class*=colcount-]>li {
   margin-left: 0 !important;
 }
+
+/* impact stories */
+.impact-story .img-responsive{
+  width: 100%;
+  height: 300px;
+}
+
+.pos-relative{
+  position: relative;
+}
+
+.centered {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -350%);
+  z-index: 5;
+  background-color: #26374a;
+  color: white;
+  padding: 10px;
+  margin: 0px;
+}
+@media only screen and (max-width: 600px) {
+  .centered {
+    transform: translate(-50%, -250%);
+  }
+}
+

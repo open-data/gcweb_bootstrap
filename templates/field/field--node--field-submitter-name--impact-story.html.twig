@@ -44,12 +44,45 @@
     'field--name-' ~ field_name|clean_class,
     'field--type-' ~ field_type|clean_class,
     'field--label-' ~ label_display,
+    'row',
+    'mrgn-tp-lg',
   ]
 %}
-<div{{ attributes.addClass('pos-relative') }}>
-  <div{{ attributes.removeClass('pos-relative').addClass('centered') }}>
-    {%- for item in items -%}
-      <p class="text-center">{{ 'by '|t }}{{ item.content }}</p>
-    {%- endfor -%}
+{%
+  set title_classes = [
+    'field--label',
+    label_display == 'visually_hidden' ? 'sr-only',
+    'col-md-3',
+    'h3',
+    'mrgn-tp-0',
+  ]
+%}
+
+{% if label_hidden %}
+  {% if multiple %}
+    <div{{ attributes.addClass(classes, 'field--items') }}>
+      {% for item in items %}
+        <div{{ item.attributes.addClass('field--item') }}>{{ item.content }}</div>
+      {% endfor %}
+    </div>
+  {% else %}
+    {% for item in items %}
+      <div{{ attributes.addClass(classes, 'field--item') }}>{{ item.content }}</div>
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{ attributes.addClass(classes) }}>
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    <div class="col-md-9">
+      {% if multiple %}
+        <div class="field--items">
+      {% endif %}
+      {% for item in items %}
+        <div{{ item.attributes.addClass('field--item') }}>{{ item.content }}</div>
+      {% endfor %}
+      {% if multiple %}
+        </div>
+      {% endif %}
+    </div>
   </div>
-</div>
+{% endif %}

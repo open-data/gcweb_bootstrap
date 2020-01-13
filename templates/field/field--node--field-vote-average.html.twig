@@ -41,15 +41,15 @@
 
 {% set vote_avg = items.0.content["#markup"]|number_format(2, '.')|round %}
 {% if vote_avg == 1 %}
-  <img class="image-actual" alt="This dataset is currently ranked one star" src="/modules/custom/voting_webform/images/onestar.png">
+  <img class="image-actual" alt="This dataset is currently ranked one star" src="/profiles/og/modules/custom/voting_webform/images/onestar.png">
 {% elseif vote_avg == 2 %}
-  <img class="image-actual" alt="This dataset is currently ranked two star" src="/modules/custom/voting_webform/images/twostar.png">
+  <img class="image-actual" alt="This dataset is currently ranked two star" src="/profiles/og/modules/custom/voting_webform/images/twostar.png">
 {% elseif vote_avg == 3 %}
-  <img class="image-actual" alt="This dataset is currently ranked three star" src="/modules/custom/voting_webform/images/threestar.png">
+  <img class="image-actual" alt="This dataset is currently ranked three star" src="/profiles/og/modules/custom/voting_webform/images/threestar.png">
 {% elseif vote_avg == 4 %}
-  <img class="image-actual" alt="This dataset is currently ranked four star" src="/modules/custom/voting_webform/images/fourstar.png">
+  <img class="image-actual" alt="This dataset is currently ranked four star" src="/profiles/og/modules/custom/voting_webform/images/fourstar.png">
 {% elseif vote_avg >= 5 %}
-  <img class="image-actual" alt="This dataset is currently ranked five star" src="/modules/custom/voting_webform/images/fivestar.png">
+  <img class="image-actual" alt="This dataset is currently ranked five star" src="/profiles/og/modules/custom/voting_webform/images/fivestar.png">
 {% else %}
-  <img class="image-actual" alt="This dataset is currently unrated" src="/modules/custom/voting_webform/images/zerostar.png">
+  <img class="image-actual" alt="This dataset is currently unrated" src="/profiles/og/modules/custom/voting_webform/images/zerostar.png">
 {% endif %}

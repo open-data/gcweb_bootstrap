@@ -29,8 +29,10 @@
   {% endif %}
 
   {% block input %}
-    <label class="wb-inv">Leave this field blank</label>
-    <input{{ attributes }} />
+    <label class="wb-inv">Leave this field blank
+      <input{{ attributes }} />
+    </label>
+
   {% endblock %}
 
   {% if suffix %}

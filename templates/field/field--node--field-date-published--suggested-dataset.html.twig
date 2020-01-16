@@ -58,19 +58,13 @@
   {% if multiple %}
     <div{{ attributes.addClass(classes, 'field--items') }}>
       {% for item in items %}
-        <div{{ item.attributes.addClass('field--item', 'btn', 'btn-success') }}>
-          <a href="{{ item.content['#url'] }}">{{ 'Get Dataset'|t }}</a>
-        </div>
+        <div{{ item.attributes.addClass('field--item') }}>{{ item.content }}</div>
       {% endfor %}
     </div>
   {% else %}
-    <div{{ attributes.addClass(classes, 'field--items') }}>
-      {% for item in items %}
-        <div{{ item.attributes.addClass('field--item', 'btn', 'btn-success') }}>
-          <a href="{{ item.content['#url'] }}">{{ 'Get Dataset'|t }}</a>
-        </div>
-      {% endfor %}
-    </div>
+    {% for item in items %}
+      <div{{ attributes.addClass(classes, 'field--item') }}>{{ item.content }}</div>
+    {% endfor %}
   {% endif %}
 {% else %}
   <div{{ attributes.addClass(classes) }}>
@@ -79,9 +73,7 @@
       <div class="field--items">
     {% endif %}
     {% for item in items %}
-      <div{{ item.attributes.addClass('field--item', 'btn', 'btn-success') }}>
-        <a href="{{ item.content['#url'] }}">{{ 'Get Dataset'|t }}</a>
-      </div>
+      <div{{ item.attributes.addClass('field--item') }}>{{ item.content }}</div>
     {% endfor %}
     {% if multiple %}
       </div>

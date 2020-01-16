@@ -59,14 +59,14 @@
     <div{{ attributes.addClass(classes, 'field--items') }}>
       {% for item in items %}
         <div{{ item.attributes.addClass('field--item', 'btn', 'btn-success') }}>
-          <a href="{{ item.content['#url'] }}">Get Dataset</a>
+          <a href="{{ item.content['#url'] }}">{{ 'Get Dataset'|t }}</a>
         </div>
       {% endfor %}
     </div>
   {% else %}
     {% for item in items %}
       <div{{ item.attributes.addClass('field--item', 'btn', 'btn-success') }}>
-        <a href="{{ item.content['#url'] }}">Get Dataset</a>
+        <a href="{{ item.content['#url'] }}">{{ 'Get Dataset'|t }}</a>
       </div>
     {% endfor %}
   {% endif %}
@@ -78,7 +78,7 @@
     {% endif %}
     {% for item in items %}
       <div{{ item.attributes.addClass('field--item', 'btn', 'btn-success') }}>
-        <a href="{{ item.content['#url'] }}">Get Dataset</a>
+        <a href="{{ item.content['#url'] }}">{{ 'Get Dataset'|t }}</a>
       </div>
     {% endfor %}
     {% if multiple %}

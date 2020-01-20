@@ -118,6 +118,15 @@
   padding: 1em;
 }
 
+.webform-progress-tracker.progress-tracker {
+  margin-bottom: 50px !important;
+}
+
+.webform-select-other .panel-title {
+ font-size: 16px;
+ font-weight: 700;
+}
+
 /* voting */
 div.svg div.rateit-range {
   background: url(../images/rating/mapleleaf-normal.svg);

@@ -43,7 +43,7 @@
       {% else %}
         {%  if label == 'Find' or label == 'Trouvez' %}
           <button{{ attributes.addClass(classes) }}>{{ icon }}<span class="visible-lg-inline">{{ label }}</span><span class="wb-inv">{{ label }}</span></button>{{ children }}
-        {%  elseif label == 'Provide contact information' or label == 'Translation' %}
+        {%  elseif label == 'Provide contact information' or label == 'Fournir des renseignements sur les personnes-ressources' %}
           <button{{ attributes.addClass(classes, 'btn-primary') }}>{{ icon }}{{ label }}</button>{{ children }}
         {% else %}
           <button{{ attributes.addClass(classes) }}>{{ icon }}{{ label }}</button>{{ children }}

@@ -127,6 +127,19 @@
  font-weight: 700;
 }
 
+.webform-submission-user-contributed-content-form{
+  background: none;
+  border: none;
+}
+
+.description.help-block{
+  font-size: 14px;
+}
+
+.bg-muted{
+  background: #eee;
+}
+
 /* voting */
 div.svg div.rateit-range {
   background: url(../images/rating/mapleleaf-normal.svg);
@@ -294,7 +307,6 @@ mark {
 .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
   margin: auto;
 }
-
 
 /* facets */
 ul.js-facets-checkbox-links {

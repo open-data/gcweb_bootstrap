@@ -57,7 +57,7 @@ class CatalogSearchBlockForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // redirect to the url link
-    $url = $form_state->getValue('url') . $form_state->getValue('query');
+    $url = $form_state->getValue('url') . urlencode($form_state->getValue('query'));
     $response = new TrustedRedirectResponse($url);
     $response->send();
   }

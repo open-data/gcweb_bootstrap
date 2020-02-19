@@ -9,7 +9,6 @@
 }
 .modal-body{
   font-size: small;
-
 }
 #selectableAPA, #selectableMLA{
   max-width:400px;
@@ -34,18 +33,15 @@
   box-sizing: border-box;
   padding: 24px 41px 0 41px;
 }
-
 .modal-body table{
   border-collapse:separate;
   border-spacing:0 8px;
 }
-
 .reportLink{
   font-size: small;
   text-align: center;
   margin-left: 15px;
 }
-
 .clip-citation{
   width: 25px;
   height: 32px;
@@ -90,6 +86,7 @@
   color: #e00;
   vertical-align: super;
   margin-left: 4px;
+  background-image: none;
 }
 
 .form-item h4.label {
@@ -127,17 +124,13 @@
  font-weight: 700;
 }
 
-.webform-submission-user-contributed-content-form{
+.webform-submission-user-contributed-content-form, .webform-submission-suggest-a-dataset-form{
   background: none;
   border: none;
 }
 
-.description.help-block{
+.help-block{
   font-size: 14px;
-}
-
-.bg-muted{
-  background: #eee;
 }
 
 /* voting */

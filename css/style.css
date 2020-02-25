@@ -124,7 +124,7 @@
  font-weight: 700;
 }
 
-.webform-submission-suggest-a-dataset-form{
+.webform-submission-user-contributed-content-form, .webform-submission-suggest-a-dataset-form{
   background: none;
   border: none;
 }
@@ -300,7 +300,6 @@ mark {
 .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
   margin: auto;
 }
-
 
 /* facets */
 ul.js-facets-checkbox-links {

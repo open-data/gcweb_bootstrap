@@ -124,7 +124,7 @@
  font-weight: 700;
 }
 
-.webform-submission-user-contributed-content-form, .webform-submission-suggest-a-dataset-form{
+.webform-submission-user-contributed-content-form, .webform-submission-suggest-a-dataset-form, .webform-submission-user-stories-form{
   background: none;
   border: none;
 }

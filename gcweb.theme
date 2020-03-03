@@ -87,7 +87,7 @@ function gcweb_page_attachments_alter(&$page) {
   $page['#attached']['library'][] = 'gcweb/wet-boew';
   $page['#attached']['library'][] = 'gcweb/wet-load';
 
-  // Load highlight library for Langing pages
+  // Load highlight library for Landing pages
   if (is_object($node = \Drupal::request()->get('node'))) {
     if ($node->getType() === 'landing_page') {
       $page['#attached']['library'][] = 'gcweb/highlight';

@@ -27,17 +27,11 @@ function gcweb_preprocess_page(&$variables) {
     }
 
     // redirect to suggested dataset page on django based search
-    if ($node->getType() == 'suggested_dataset') {
-      $request = \Drupal::request();
-      $referer_url = $request->headers->get('referer');
-      $url_components = parse_url($referer_url);
-      $domain = \Drupal\Core\Site\Settings::get('search_domain');
-
-      if (!$referer_url || $url_components['host'] != $domain[$variables['langcode']]) {
-        $path = 'https://' . $domain[$variables['langcode']] . $variables['langcode'] . '/sd/id/' . $node->uuid();
-        $response = new TrustedRedirectResponse($path);
-        $response->send();
-      }
+    if ($node->getType() == 'suggested_dataset' && $variables['is_admin'] == false) {
+      $domain = \Drupal\Core\Site\Settings::get('sd_search');
+      $path = $domain[$variables['langcode']] . $node->uuid();
+      $response = new TrustedRedirectResponse($path);
+      $response->send();
     }
 
     // date modified

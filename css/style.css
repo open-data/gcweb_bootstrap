@@ -81,17 +81,25 @@
 
 /* Form styles */
 .form-required:after {
-  content: "*";
-  display: inline-block;
+  content: "(required)";
+  display: inline;
   color: #e00;
-  vertical-align: super;
+  vertical-align: baseline;
   margin-left: 4px;
   background-image: none;
 }
-
+.form-required:lang(fr):after {
+  content: "(requis)";
+}
+.form-item {
+  margin-top: 30px;
+}
+.form-inline .form-item {
+  margin-top: 0;
+}
 .form-item h4.label {
   border: none;
-  padding: 0px;
+  padding: 0;
   display: inline-block;
   text-align: left;
   color: #000;

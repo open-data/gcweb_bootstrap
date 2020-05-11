@@ -25,7 +25,7 @@ function gcweb_preprocess_page(&$variables) {
       $response = new TrustedRedirectResponse($path[0]['uri']);
       $response->send();
     }
-
+/*
     // redirect to suggested dataset page on django based search
     if ($node->getType() == 'suggested_dataset' && $variables['is_admin'] == false) {
       $domain = \Drupal\Core\Site\Settings::get('sd_search');
@@ -33,7 +33,7 @@ function gcweb_preprocess_page(&$variables) {
       $response = new TrustedRedirectResponse($path);
       $response->send();
     }
-
+*/
     // date modified
     $time = $node->getChangedTime();
     $variables['date_modified'] = \Drupal::service('date.formatter')->format($time, 'custom', 'Y-m-d');

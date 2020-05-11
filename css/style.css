@@ -91,6 +91,10 @@
 .form-required:lang(fr):after {
   content: "(requis)";
 }
+.form-required:before {
+  color: #e00;
+  content: "* ";
+}
 .form-item {
   margin-top: 30px;
 }
@@ -127,9 +131,13 @@
   margin-bottom: 50px !important;
 }
 
-.webform-select-other .panel-title {
+.form-item .panel-title {
  font-size: 16px;
  font-weight: 700;
+}
+
+.form-item .panel-body {
+  font-size: 14px;
 }
 
 .webform-submission-user-contributed-content-form, .webform-submission-suggest-a-dataset-form, .webform-submission-user-stories-form{
@@ -141,6 +149,9 @@
   font-size: 14px;
 }
 
+.progress-marker{
+  z-index: unset;
+}
 /* voting */
 div.svg div.rateit-range {
   background: url(../images/rating/mapleleaf-normal.svg);

@@ -36,6 +36,14 @@ class ThemeSuggestions extends BootstrapThemeSuggestions {
         $suggestions[] = 'form__' . str_replace('-','_',$form_id);
         break;
 
+      // html
+      case 'html':
+        $node = \Drupal::routeMatch()->getParameter('node');
+        if (is_object($node)) {
+          $suggestions[] = 'html__node__' . $node->bundle();
+        }
+        break;
+
       // page
       case 'page':
         $node = \Drupal::routeMatch()->getParameter('node');

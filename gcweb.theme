@@ -25,7 +25,15 @@ function gcweb_preprocess_page(&$variables) {
       $response = new TrustedRedirectResponse($path[0]['uri']);
       $response->send();
     }
-
+/*
+    // redirect to suggested dataset page on django based search
+    if ($node->getType() == 'suggested_dataset' && $variables['is_admin'] == false) {
+      $domain = \Drupal\Core\Site\Settings::get('sd_search');
+      $path = $domain[$variables['langcode']] . $node->uuid();
+      $response = new TrustedRedirectResponse($path);
+      $response->send();
+    }
+*/
     // date modified
     $time = $node->getChangedTime();
     $variables['date_modified'] = \Drupal::service('date.formatter')->format($time, 'custom', 'Y-m-d');
@@ -87,7 +95,7 @@ function gcweb_page_attachments_alter(&$page) {
   $page['#attached']['library'][] = 'gcweb/wet-boew';
   $page['#attached']['library'][] = 'gcweb/wet-load';
 
-  // Load highlight library for Langing pages
+  // Load highlight library for Landing pages
   if (is_object($node = \Drupal::request()->get('node'))) {
     if ($node->getType() === 'landing_page') {
       $page['#attached']['library'][] = 'gcweb/highlight';

@@ -9,7 +9,6 @@
 }
 .modal-body{
   font-size: small;
-
 }
 #selectableAPA, #selectableMLA{
   max-width:400px;
@@ -34,18 +33,15 @@
   box-sizing: border-box;
   padding: 24px 41px 0 41px;
 }
-
 .modal-body table{
   border-collapse:separate;
   border-spacing:0 8px;
 }
-
 .reportLink{
   font-size: small;
   text-align: center;
   margin-left: 15px;
 }
-
 .clip-citation{
   width: 25px;
   height: 32px;
@@ -85,16 +81,29 @@
 
 /* Form styles */
 .form-required:after {
-  content: "*";
-  display: inline-block;
+  content: "(required)";
+  display: inline;
   color: #e00;
-  vertical-align: super;
+  vertical-align: baseline;
   margin-left: 4px;
+  background-image: none;
 }
-
+.form-required:lang(fr):after {
+  content: "(requis)";
+}
+.form-required:before {
+  color: #e00;
+  content: "* ";
+}
+.form-item {
+  margin-top: 30px;
+}
+.form-inline .form-item {
+  margin-top: 0;
+}
 .form-item h4.label {
   border: none;
-  padding: 0px;
+  padding: 0;
   display: inline-block;
   text-align: left;
   color: #000;
@@ -118,6 +127,31 @@
   padding: 1em;
 }
 
+.webform-progress-tracker.progress-tracker {
+  margin-bottom: 50px !important;
+}
+
+.form-item .panel-title {
+ font-size: 16px;
+ font-weight: 700;
+}
+
+.form-item .panel-body {
+  font-size: 14px;
+}
+
+.webform-submission-user-contributed-content-form, .webform-submission-suggest-a-dataset-form, .webform-submission-user-stories-form{
+  background: none;
+  border: none;
+}
+
+.help-block{
+  font-size: 14px;
+}
+
+.progress-marker{
+  z-index: unset;
+}
 /* voting */
 div.svg div.rateit-range {
   background: url(../images/rating/mapleleaf-normal.svg);
@@ -285,7 +319,6 @@ mark {
 .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
   margin: auto;
 }
-
 
 /* facets */
 ul.js-facets-checkbox-links {

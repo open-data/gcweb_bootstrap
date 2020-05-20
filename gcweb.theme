@@ -101,6 +101,13 @@ function gcweb_page_attachments_alter(&$page) {
       $page['#attached']['library'][] = 'gcweb/highlight';
     }
   }
+
+  // Load foresee survey library for non-admin users
+  if (is_object($node = \Drupal::request()->get('node'))
+    && \Drupal::currentUser()->isAuthenticated() == false) {
+      $page['#attached']['library'][] = 'gcweb/foresee-survey';
+  }
+
 }
 
 /**

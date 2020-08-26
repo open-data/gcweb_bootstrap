@@ -70,9 +70,9 @@
     <ul{{ attributes.addClass(list_classes) }}>
       {% for item in items %}
         <li{{ item.attributes.addClass(list_item_classes) }}>
-          <button type="button" class="btn btn-default">
+          <div type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{ item.content }}
-          </button>
+          </div>
         </li>
       {% endfor %}
     </ul>
@@ -90,9 +90,9 @@
       {% endif %}
       {% for item in items %}
         <li{{ item.attributes.addClass(list_item_classes) }}>
-          <button type="button" class="btn btn-default">
+          <div type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> {{ item.content }}
-          </button>
+          </div>
         </li>
       {% endfor %}
       {% if multiple %}

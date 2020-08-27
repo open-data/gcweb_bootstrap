@@ -3,14 +3,14 @@
 ;(function (g) {
   var d = document, am = d.createElement('script'), h = d.head || d.getElementsByTagName("head")[0], fsr = 'fsReady',
   aex = {
-    "src": "//gateway.foresee.com/sites/canadiangov/production/gateway.min.js",
+    "src": drupalSettings.survey_url,
     "type": "text/javascript",
     "async": "true",
     "data-vendor": "fs",
     "data-role": "gateway"
   };
   for (var attr in aex) { am.setAttribute(attr, aex[attr]); } h.appendChild(am); g[fsr] || (g[fsr] = function () { var aT = '__' + fsr + '_stk__'; g[aT] = g[aT] || []; g[aT].push(arguments); });
-})(window);
+})(window, window.drupalSettings);
 // DO NOT MODIFY ABOVE THIS LINE *****************************************
 
 // Un-comment out the function below when you are ready to input your variable

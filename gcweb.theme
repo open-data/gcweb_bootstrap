@@ -101,6 +101,17 @@ function gcweb_page_attachments_alter(&$page) {
       $page['#attached']['library'][] = 'gcweb/highlight';
     }
   }
+
+  // Load foresee survey library for non-admin users
+  $default_domain = \Drupal\Core\Site\Settings::get('default_domain');
+  $host_domain = \Drupal::request()->getHttpHost();
+  if ($default_domain
+    && in_array($host_domain, $default_domain)
+    && \Drupal::currentUser()->isAuthenticated() == false) {
+      $page['#attached']['drupalSettings']['survey_url'] = \Drupal\Core\Site\Settings::get('survey_url');
+      $page['#attached']['library'][] = 'gcweb/foresee-survey';
+  }
+
 }
 
 /**

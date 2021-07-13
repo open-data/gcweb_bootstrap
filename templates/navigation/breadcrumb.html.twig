@@ -10,7 +10,7 @@
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 {% if breadcrumb %}
   <nav id="wb-bc" property="breadcrumb" role="navigation">
-    <h2>{{ 'You are here:'|t }}</h2>
+    <h2 class="wb-inv">{{ 'You are here:'|t }}</h2>
     <div class="{{ container }}">
       <ol class="breadcrumb">
       {% for item in breadcrumb %}

@@ -52,6 +52,16 @@ class ThemeSuggestions extends BootstrapThemeSuggestions {
         }
         break;
 
+      // region
+      case 'region':
+        $node = \Drupal::routeMatch()->getParameter('node');
+        $region = $variables['elements']['#region'];
+        if (is_object($node)) {
+          $suggestions[] = 'region__' . $region;
+          $suggestions[] = 'region__' . $region . '__' . $node->bundle();
+        }
+        break;
+
       // views
       case 'views_view':
         $view = $variables['view'];

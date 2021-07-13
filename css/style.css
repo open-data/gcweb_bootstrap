@@ -608,3 +608,7 @@ ul.js-facets-checkbox-links .facet-item label {
     display: inline-block;
     margin-right: .7em;
 }
+.container.gc-srvinfo {
+    padding-left: 0;
+    padding-right: 0;
+}

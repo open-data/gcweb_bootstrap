@@ -56,7 +56,6 @@
 #}
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 {% set main_classes = [
-    'col-md-12',
     'main-container',
     container,
     'js-quickedit-main-content',
@@ -131,7 +130,7 @@
 {# Breadcrumb #}
 {% if page.breadcrumb %}
   {% block breadcrumb  %}
-    <div class="{{ container }}">{{ page.breadcrumb }}</div>
+    {{ page.breadcrumb }}
   {% endblock %}
 {% endif %}
 
@@ -140,71 +139,86 @@
 {% block main %}
 
   <div class="{{ container }}">
-    <div class="row">
+    {# Highlighted #}
+    {% if page.highlighted %}
+      {% block highlighted  %}
+        <div class="highlighted">{{ page.highlighted }}</div>
+      {% endblock %}
+    {% endif %}
+  </div>
 
-      {# Highlighted #}
-      {% if page.highlighted %}
-        {% block highlighted  %}
-          <div class="highlighted">{{ page.highlighted }}</div>
+  {# Content #}
+  <main role="main" property="mainContentOfPage">
+
+    <div class="{{ container }}">
+      {# Header #}
+      {% if page.header %}
+        {% block header %}
+          {{ page.header }}
         {% endblock %}
       {% endif %}
 
-      {# Content #}
-      <main role="main" property="mainContentOfPage" {{ content_attributes.addClass(main_classes) }}>
-
-        {# Header #}
-        {% if page.header %}
-          {% block header %}
-            {{ page.header }}
+      {# Action Links #}
+      <section>
+        {% if action_links %}
+          {% block action_links %}
+            <ul class="action-links">{{ action_links }}</ul>
           {% endblock %}
         {% endif %}
-
-        <section>
-          {# Action Links #}
-          {% if action_links %}
-            {% block action_links %}
-              <ul class="action-links">{{ action_links }}</ul>
-            {% endblock %}
-          {% endif %}
-
-          {# Content #}
-          {% block content %}
-            <a id="main-content"></a>
-            {{ page.content }}
-
-            {# CDTS PREFOOTER REFERENCE #}
-            <div id="def-preFooter">
-              {# Write closure fall-back #}
-              <div class="pagedetails">
-                <div class="row">
-                  <div class="col-sm-4 col-md-3 col-lg-3">
-                    <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><p>
-                        <a class="btn btn-default btn-block" href="{{ feedback_link }}">
-                          <span class="glyphicon glyphicon-comment mrgn-rght-sm">&nbsp;</span>
-                            {{ 'Feedback'|t }}
-                          <span class="wb-inv">{{ 'About the Open Government website'|t }}</span>
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                  {# Share button #}
-                  <div class="wb-share col-sm-4 col-md-3 col-sm-offset-4 col-md-offset-6 col-lg-offset-6" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div>
-                  {# END Share button #}
-                </div>
-                <dl id="wb-dtmd">
-                  <dt>{{ 'Date modified:'|t }}</dt>
-                  <dd><time property="dateModified">{{ date_modified }}</time></dd>
-                </dl>
-              </div>
-            </div>
-          {% endblock %}
-        </section>
-
-      </main>
-
+      </section>
     </div>
-  </div>
 
+    {# Content #}
+      {% block content %}
+
+        <a id="main-content"></a>
+
+        {% if node.bundle != 'theme_and_topic_page' %}
+          <div {{ content_attributes.addClass(main_classes) }}>
+          {{ page.title }}
+        {% endif %}              
+
+        {{ page.content }}
+
+        {% if node.bundle != 'theme_and_topic_page' %}
+          </div>
+        {% endif %}              
+
+        <div class="{{ container }}">
+
+          {# CDTS PREFOOTER REFERENCE #}
+          <div id="def-preFooter">
+
+            {# Write closure fall-back #}
+            <div class="pagedetails">
+              <div class="row">
+                <div class="col-sm-4 col-md-3 col-lg-3">
+                  <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><p>
+                      <a class="btn btn-default btn-block" href="{{ feedback_link }}">
+                        <span class="glyphicon glyphicon-comment mrgn-rght-sm">&nbsp;</span>
+                          {{ 'Feedback'|t }}
+                        <span class="wb-inv">{{ 'About the Open Government website'|t }}</span>
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                {# Share button #}
+                <div class="wb-share col-sm-4 col-md-3 col-sm-offset-4 col-md-offset-6 col-lg-offset-6" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div>
+                {# END Share button #}
+
+              </div>
+              <dl id="wb-dtmd">
+                <dt>{{ 'Date modified:'|t }}</dt>
+                <dd><time property="dateModified">{{ date_modified }}</time></dd>
+              </dl>
+            </div>
+          </div>
+
+        </div>
+      {% endblock %}
+
+  </main>
 {% endblock %}
 
 {# CDTS FOOTER REFERENCE #}

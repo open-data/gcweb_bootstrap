@@ -40,9 +40,3 @@ highlight:
   version: VERSION
   js:
     js/highlight.min.js: { minified: true, attributes: { defer: true, async: true } }
-
-# Library for Foresee survey
-foresee-survey:
-  version: VERSION
-  js:
-    js/foresee-survey.min.js: { minified: true, attributes: { defer: true, async: true } }

@@ -277,12 +277,6 @@ ul.subjects li a span {
   -moz-appearance: none;
 }
 
-#wb-bc ol {
-  margin-top: 15px;
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
 #drupal-off-canvas *, #drupal-off-canvas *:not(div) {
   word-spacing: normal;
   background: inherit;
@@ -515,4 +509,102 @@ ul.js-facets-checkbox-links .facet-item label {
 
 [class*=colcount-]>li {
   margin-left: 0 !important;
+}
+
+/* navigation */
+#wb-bc ol {
+  margin-top: 15px;
+  padding-left: 0px !important;
+  padding-right: 0px !improtant;
+}
+
+.provisional.most-requested-bullets li {
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 26px;
+    margin-top: 0;
+}
+.provisional.followus-vertical, .provisional.followus {
+    background-color: transparent;
+}
+.provisional.followus-vertical {
+    line-height: 0em;
+}
+.provisional.followus {
+    padding: 0;
+}
+.provisional.followus h2, .provisional.followus ul {
+    margin-left: 0;
+}
+.provisional.followus h2 {
+    display: block;
+}
+.provisional.followus h2 {
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+.provisional.followus-vertical ul {
+    display: block;
+    list-style-type: none;
+    margin-block-start: 1em;
+    padding-inline-start: 1em;
+    font-size: 16px;
+    margin-block-end: 0em;
+}
+.provisional.followus h2, .provisional.followus ul {
+    margin-left: 0;
+}
+.provisional.followus .facebook {
+    background: url(https://design.canada.ca/images/social-media/facebook.png) 0 0 / cover no-repeat;
+}
+.provisional.followus .twitter {
+    background: url(https://design.canada.ca/images/social-media/twitter.png) 0 0 / cover no-repeat;
+}
+.provisional.followus .facebook, .provisional.followus .twitter, .provisional.followus .youtube, .provisional.followus .instagram, .provisional.followus .linkedin {
+    display: block;
+    height: 38px;
+    width: 38px;
+}
+.provisional.followus-vertical ul li {
+    margin-bottom: 15px;
+}
+.provisional.followus-vertical li {
+    display: block;
+    background-position: left;
+}
+.provisional.followus ul li a {
+    border: none;
+}
+
+.provisional.followus-vertical ul li a {
+    border: none;
+    padding: 0px 5px;
+}
+.provisional.followus-vertical a {
+    text-decoration: none;
+}
+.provisional .social-lnk {
+    position: relative;
+    bottom: -18px;
+    left: 45px;
+}
+.provisional.from {
+    font-size: 17px;
+    margin-top: 7px;
+}
+.provisional.contributors {
+    font-size: 16px;
+    font-weight: 600;
+}
+.provisional.contributors ul {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: -50px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+.provisional.contributors li {
+    display: inline-block;
+    margin-right: .7em;
 }

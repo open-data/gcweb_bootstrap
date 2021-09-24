@@ -15,8 +15,9 @@
 
 <form{{ attributes }}>
   {{ children }}
+  <div class="alert alert-info">
   <details class="mrgn-tp-md">
-    <summary class="alert alert-info">{{ 'Rules of Engagement'|t }}
+    <summary>{{ 'Rules of Engagement'|t }}
     </summary>
     {% trans %}
       <p>We look forward to hearing from you. Your ideas and feedback are central to the development of both the Open Government portal and the Government of Canada’s approach to Open Government.</p>
@@ -41,4 +42,5 @@
       <p>Our team will reply to comments in the official language in which they are posted. If we determine the response is a question of general public interest, we will respond in both official languages.</p>
     {% endtrans %}
   </details>
+  </div>
 </form>

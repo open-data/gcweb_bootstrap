@@ -13,7 +13,7 @@
  */
 #}
 {% if is_front %}
-<div itemscope itemtype=https://schema.org/WebSite>
+<div itemscope itemtype="https://schema.org/WebSite">
   <meta itemprop="url" content="{{ url('<front>')|render|trim('enfr','right') }}" />
   <form {{ attributes }} itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
     <meta itemprop="target" content="{{ element.url['#attributes'].value }}{query}"/>

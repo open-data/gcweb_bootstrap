@@ -55,6 +55,7 @@ function gcweb_preprocess_page(&$variables) {
  * Implements hook_page_attachments_alter()
  * attach libraries for WET-BOEW
  * attach highlight library
+ * attach event tracking library to user pages
  */
 function gcweb_page_attachments_alter(&$page) {
   $langCode = \Drupal::languageManager()->getCurrentLanguage()->getId();
@@ -100,6 +101,11 @@ function gcweb_page_attachments_alter(&$page) {
     if ($node->getType() === 'landing_page') {
       $page['#attached']['library'][] = 'gcweb/highlight';
     }
+  }
+
+  // Load Event Tracking library for user pages
+  if (strpos(\Drupal::request()->getRequestUri(), '/user/') !== false) {
+      $page['#attached']['library'][] = 'gcweb/event-tracking';
   }
 }
 

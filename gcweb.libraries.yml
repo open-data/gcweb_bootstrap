@@ -37,6 +37,13 @@ wet-boew:
 
 # Library for highlighting
 highlight:
-  version: VERSION
   js:
     js/highlight.min.js: { minified: true, attributes: { defer: true, async: true } }
+
+# Library for event tracking
+event-tracking:
+  js:
+    js/event-tracking.min.js: { minified: true, attributes: { defer: true, async: true } }
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

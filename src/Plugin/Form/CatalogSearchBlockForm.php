@@ -34,6 +34,11 @@ class CatalogSearchBlockForm extends FormBase {
       '#placeholder' => '',
     ];
 
+    $form['url'] = [
+      '#id' => 'url',
+      '#type' => 'hidden',
+    ];
+
     $form['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Find'),

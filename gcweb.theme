@@ -171,7 +171,7 @@ function gcweb_form_alter( &$_form, $_formState, $_formID )
 
     $_form['registryMessage'] = [
       '#type'     => 'markup',
-      '#markup'   => "<br/><div class='row alert fade in alert-danger'><p><strong>" . t("Government of Canada Users should go to the <a href='https://registry.open.canada.ca/en/user/login' target='_blank'>Open Government Registry</a> (available only on Government Canada networks) to make updates to datasets or proactive publications") . "</strong></p></div>",
+      '#markup'   => "<br/><div class='row alert fade in alert-danger'><p><strong>" . t("Government of Canada users should use the <a href='https://registry.open.canada.ca/en/user/login' target='_blank'>Registry</a> to publish government resources on the Open Government Portal. (accessible only on the Government of Canada network)") . "</strong></p></div>",
       '#weight'   => -66
     ];
 

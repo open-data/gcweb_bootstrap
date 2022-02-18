@@ -61,15 +61,15 @@
 
     {{ title_suffix }}
 
-    {% if content.field_link is not empty %}
+    {% if content.field_spotlight_link is not empty %}
 
-        <a href="{{ content.field_link[0] }}">
+        <a href="{{ content.field_spotlight_link[0]['#url'] }}">
 
             <figure class="row">
 
-                {% if content.field_heading is not empty %}
+                {% if content.field_spotlight_link[0]['#title'] is not empty %}
 
-                    <figcaption class="pull-right col-md-6 col-xs-12">{{ content.field_heading[0] }}</figcaption>
+                    <figcaption class="pull-right col-md-6 col-xs-12">{{ content.field_spotlight_link[0]['#title'] }}</figcaption>
 
                 {% endif %}
 

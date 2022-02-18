@@ -151,3 +151,30 @@ function gcweb_preprocess_user(&$variables) {
 function gcweb_preprocess_pager(&$variables){
   $variables['heading_id'] = \Drupal\Component\Utility\Html::getUniqueId('pagination-heading');
 }
+
+/**
+ * @method void gcweb_form_alter()
+ * @param array $_form
+ * @param \Drupal\Core\Form\FormStateInterface $_formState
+ * @param string $_formID
+ * @return void
+ * 
+ * @see https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Form!form.api.php/function/hook_form_alter/8.0.x
+ */
+function gcweb_form_alter( &$_form, $_formState, $_formID )
+{
+  
+  if( 
+    $_formID === 'user_login_form' ||
+    $_formID === 'user_pass'
+  ){
+
+    $_form['registryMessage'] = [
+      '#type'     => 'markup',
+      '#markup'   => "<br/><div class='row alert fade in alert-danger'><p><strong>" . t("Government of Canada users should use the <a href='https://registry.open.canada.ca/en/user/login' target='_blank'>Registry</a> to publish government resources on the Open Government Portal. (accessible only on the Government of Canada network)") . "</strong></p></div>",
+      '#weight'   => -66
+    ];
+
+  }
+
+}

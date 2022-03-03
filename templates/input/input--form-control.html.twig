@@ -28,10 +28,6 @@
   %}
   {% block input %}
     <label class="wb-inv">Leave this field blank</label>
-    {% if is_front and attributes.id == 'query' and type == 'textfield' %}
-      <input itemprop="query-input"{{ attributes.addClass(classes) }} />
-    {% else %}
-      <input{{ attributes.addClass(classes) }} />
-    {% endif %}
+    <input{{ attributes.addClass(classes) }} />
   {% endblock %}
 {% endspaceless %}

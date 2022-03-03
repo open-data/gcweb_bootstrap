@@ -62,5 +62,47 @@
 
   {% block content %}
     {{ content.body[0] }}
+
+    {% if is_front %}
+      <div itemscope itemtype="https://schema.org/WebSite">
+        <meta itemprop="url" content="{{ url('<front>')|render|trim('enfr','right') }}" />
+
+        <form action="{{ content.field_search_path[0]['#url'] }}" method="get" class="form-inline" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+          <meta itemprop="target" content="{{ content.field_search_path[0]['#url'] }}?search_text={search_text}"/>
+          <label for="search_text" class="wb-inv">{{ 'Search'|t }}</label>
+          <div class="input-group">
+            <input itemprop="query-input" type="search" id="search_text" name="search_text" class="form-control" size="50%" maxlength="256" placeholder="{{ content.field_search_placeholder[0] }}">
+            <span class="input-group-btn">
+              <button class="btn btn-primary icon-before" type="submit" id="search_submit">
+                <span class="icon glyphicon glyphicon-search" aria-hidden="true"></span>
+                <span class="visible-lg-inline">{{ 'Find'| t }}</span>
+                <span class="wb-inv">{{ 'Find'| t }}</span>
+              </button>
+            </span>
+          </div>
+        </form>
+
+      </div>
+
+    {% else %}
+
+      <form action="{{ content.field_search_path[0]['#url'] }}" method="get" class="form-inline">
+        {% set filter = content.field_search_filter[0]['#context']['value']|split('=') %}
+        <input type="hidden" name="{{ filter[0]}}" id="{{ filter[0]}}" value="{{ filter[1]}}">
+        <label for="search_text" class="wb-inv">{{ 'Search'|t }}</label>
+        <div class="input-group">
+          <input type="search" id="search_text" name="search_text" class="form-control" size="50%" maxlength="256" placeholder="{{ content.field_search_placeholder[0] }}">
+          <span class="input-group-btn">
+            <button class="btn btn-primary icon-before" type="submit" id="search_submit">
+              <span class="icon glyphicon glyphicon-search" aria-hidden="true"></span>
+              <span class="visible-lg-inline">{{ 'Find'| t }}</span>
+              <span class="wb-inv">{{ 'Find'| t }}</span>
+            </button>
+          </span>
+        </div>
+      </form>
+
+    {% endif %}
+
   {% endblock %}
 </section>

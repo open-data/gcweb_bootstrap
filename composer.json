@@ -12,16 +12,16 @@
             "type"    : "package",
             "package" : {
                 "name"    : "wet-boew/wet-boew",
-                "version" : "v4.0.32",
+                "version" : "v4.0.43",
                 "type"    : "drupal-library",
                 "dist"    : {
-                    "url"  : "https://github.com/wet-boew/wet-boew-cdn/archive/v4.0.32.tar.gz",
+                    "url"  : "https://github.com/wet-boew/wet-boew-cdn/archive/v4.0.43.tar.gz",
                     "type" : "tar"
                 },
                 "source"  : {
                     "url"       : "https://github.com/wet-boew/wet-boew-cdn.git",
                     "type"      : "git",
-                    "reference" : "v4.0.32"
+                    "reference" : "v4.0.43"
                 }
             }
         },
@@ -29,16 +29,16 @@
             "type"    : "package",
             "package" : {
                 "name"    : "wet-boew/theme-gcweb",
-                "version" : "v6.0",
+                "version" : "v9.4.0",
                 "type"    : "drupal-library",
                 "dist"    : {
-                    "url"  : "https://github.com/wet-boew/themes-cdn/archive/v6.0-gcweb.tar.gz",
+                    "url"  : "https://github.com/wet-boew/themes-cdn/archive/v9.4.0-gcweb.tar.gz",
                     "type" : "tar"
                 },
                 "source"  : {
                     "url"       : "https://github.com/wet-boew/themes-cdn.git",
                     "type"      : "git",
-                    "reference" : "v6.0-gcweb"
+                    "reference" : "v9.4.0-gcweb"
                 }
             }
         }
@@ -46,10 +46,10 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal/bootstrap": "3.21.0",
+        "drupal/bootstrap": "3.23.0",
         "drupal/core": "^8",
-        "wet-boew/theme-gcweb": "6.0",
-        "wet-boew/wet-boew": "v4.0.32"
+        "wet-boew/theme-gcweb": "9.4.0",
+        "wet-boew/wet-boew": "v4.0.43"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

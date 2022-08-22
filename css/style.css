@@ -272,6 +272,7 @@ ul.subjects li a span {
 }
 
 /* layout builder */
+
 #drupal-off-canvas select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -281,6 +282,11 @@ ul.subjects li a span {
   word-spacing: normal;
   background: inherit;
   font-family: "Lucida Grande", "Lucida Sans Unicode", "liberation sans", "Glyphicons Halflings", sans-serif;
+}
+
+#drupal-off-canvas ul li, #drupal-off-canvas ol li {
+  padding: 0;
+  border-bottom: none
 }
 
 /* highlighting using mark */
@@ -611,4 +617,14 @@ ul.js-facets-checkbox-links .facet-item label {
 .container.gc-srvinfo {
     padding-left: 0;
     padding-right: 0;
+}
+
+/* style for book page navigation */
+.ul-wet-book-pager-navigation {
+  column-count: 2;
+  list-style-type: none;
+}
+  
+.ul-wet-book-pager-navigation  li:last-child {
+  text-align: right;
 }

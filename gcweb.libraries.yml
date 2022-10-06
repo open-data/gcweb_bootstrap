@@ -2,9 +2,9 @@
 global-styling:
   css:
     theme:
-      css/style.min.css: { minified: true, attributes: { defer: true, async: true } }
+      css/style.min.css: { minified: true, attributes: { defer: true } }
   js:
-    js/citation.min.js: { minified: true, attributes: { defer: true, async: true } }
+    js/citation.min.js: { minified: true, attributes: { defer: true } }
   dependencies:
     - core/jquery
 
@@ -19,14 +19,12 @@ wet-load:
 wet-boew:
   css:
     theme:
-      /libraries/theme-gcweb/css/theme.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true, attributes: { defer: true, async: true } }
-      /libraries/theme-gcweb/css/ie8-theme.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true, attributes: { defer: true, async: true } }
-      /libraries/theme-gcweb/css/wet-boew.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true, attributes: { defer: true, async: true } }
-      /libraries/theme-gcweb/css/ie8-wet-boew.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true, attributes: { defer: true, async: true } }
-      /libraries/theme-gcweb/css/wet-boew-overrides.min.css: { minified: true, attributes: { defer: true, async: true } }
-      /libraries/theme-gcweb/css/small-component.min.css: { minified: true, attributes: { defer: true, async: true } }
-      /libraries/theme-gcweb/css/messages.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true, attributes: { defer: true, async: true } }
-      /libraries/theme-gcweb/css/messages-ie.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true, attributes: { defer: true, async: true } }
+      /libraries/theme-gcweb/css/theme.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true, attributes: { defer: true } }
+      /libraries/theme-gcweb/css/ie8-theme.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true, attributes: { defer: true } }
+      /libraries/theme-gcweb/css/wet-boew.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true, attributes: { defer: true } }
+      /libraries/theme-gcweb/css/ie8-wet-boew.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true, attributes: { defer: true } }
+      /libraries/theme-gcweb/css/messages.min.css: { browsers: { IE: 'gte IE 9', '!IE': true }, minified: true, attributes: { defer: true } }
+      /libraries/theme-gcweb/css/messages-ie.min.css: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: true, attributes: { defer: true } }
   js:
     /libraries/wet-boew/js/ie8-wet-boew.min.js: { preprocess: false, browsers: { IE: 'lt IE 9', '!IE': false }, minified: false, weight: -1 }
     /libraries/wet-boew/js/wet-boew.min.js: { preprocess: false, browsers: { IE: 'gte IE 9', '!IE': true }, minified: false, weight: -1 }
@@ -38,12 +36,12 @@ wet-boew:
 # Library for highlighting
 highlight:
   js:
-    js/highlight.min.js: { minified: true, attributes: { defer: true, async: true } }
+    js/highlight.min.js: { minified: true, attributes: { defer: true } }
 
 # Library for event tracking
 event-tracking:
   js:
-    js/event-tracking.min.js: { minified: true, attributes: { defer: true, async: true } }
+    js/event-tracking.min.js: { minified: true, attributes: { defer: true } }
   dependencies:
     - core/jquery
     - core/drupalSettings

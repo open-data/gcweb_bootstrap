@@ -107,6 +107,30 @@ function gcweb_page_attachments_alter(&$page) {
   if (strpos(\Drupal::request()->getRequestUri(), '/user/') !== false) {
       $page['#attached']['library'][] = 'gcweb/event-tracking';
   }
+
+  // Load Google Analytics library
+  $ga_key = \Drupal\Core\Site\Settings::get('GA4_KEY');
+
+  if ($ga_key and \Drupal::currentUser()->isAnonymous()) {
+    $page['#attached']['html_head'][] = [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'script',
+        '#attributes' => [ 'src' => 'https://www.googletagmanager.com/gtag/js?id=' . $ga_key, 'async' => true ],
+      ],
+      'ga4',
+    ];
+
+    $ga_script = 'window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "' . $ga_key . '");';
+    $page['#attached']['html_head'][] = [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'script',
+        '#value' => Drupal\Core\Render\Markup::create($ga_script),
+      ],
+      'ga4_script',
+    ];
+  }
 }
 
 /**

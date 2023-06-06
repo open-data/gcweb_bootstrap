@@ -55,6 +55,24 @@
  */
 #}
 
+<style>
+.webform-submission-feedback-form .form-required:after {
+    content: "(required)";
+    display: inline;
+    color: #e00;
+    vertical-align: baseline;
+    margin-left: 4px;
+    background-image: none;
+}
+.webform-submission-feedback-form .form-required:lang(fr):after {
+    content: "(requis)";
+}
+.webform-submission-feedback-form .form-required:before {
+    color: #e00;
+    content: "* ";
+}
+</style>
+
 {# Content #}
 {% block content %}
     <div class="row">

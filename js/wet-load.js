@@ -31,7 +31,7 @@
         let defPreFooter = document.getElementById("def-preFooter");
         if ($(defPreFooter).length > 0) {
           defPreFooter.outerHTML = wet.builder.preFooter({
-            "showFeedback" : drupalSettings.feedback_link,
+            "showFeedback" : false,
             "dateModified": drupalSettings.date_modified
           });
         }

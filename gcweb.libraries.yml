@@ -45,3 +45,9 @@ event-tracking:
   dependencies:
     - core/jquery
     - core/drupalSettings
+
+# Library for homepage
+front:
+  css:
+    theme:
+      css/front.min.css: { minified: true, attributes: { defer: true } }

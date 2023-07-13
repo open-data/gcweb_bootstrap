@@ -108,6 +108,14 @@ function gcweb_page_attachments_alter(&$page) {
       $page['#attached']['library'][] = 'gcweb/event-tracking';
   }
 
+  // Load front library for homepage
+  if (is_object($node = \Drupal::request()->get('node'))) {
+    $is_front = \Drupal::service('path.matcher')->isFrontPage();
+    if ($is_front) {
+      $page['#attached']['library'][] = 'gcweb/front';
+    }
+  }
+
   // Load Google Analytics library
   $ga_key = \Drupal\Core\Site\Settings::get('GA4_KEY');
 

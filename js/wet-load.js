@@ -39,7 +39,8 @@
         // load CDTS Footer refernce
         let defFooter = document.getElementById("def-footer");
         if ($(defFooter).length > 0) {
-          defFooter.outerHTML = wet.builder.footer();
+          defFooter.outerHTML = wet.builder.footer({
+          });
         }
       });
     }

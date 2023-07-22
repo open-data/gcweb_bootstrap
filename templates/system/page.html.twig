@@ -214,13 +214,12 @@
 {% endblock %}
 
 {# CDTS FOOTER REFERENCE #}
-<div {%  if  not custom_footer %}id="def-footer"{% endif %}>
-  {# Write closure fall-back #}
+{% if custom_footer %}
   {% if page.footer %}
     {% block footer %}
       <footer id="wb-info">
         <div class="landscape">
-            {{ page.footer }}
+          {{ page.footer }}
         </div>
         <div class="brand">
           <div class="{{ container }}">
@@ -238,4 +237,9 @@
       </footer>
     {% endblock %}
   {% endif %}
-</div>
+{% else %}
+  <div id="def-footerr">
+    {# Write closure fall-back #}
+    {% include "footer-" ~ langcode ~ ".html.twig" %}
+  </div>
+{% endif %}

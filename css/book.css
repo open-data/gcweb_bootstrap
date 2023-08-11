@@ -30,6 +30,11 @@
     top: 0;
     overflow-y: auto;
 }
+.book-toc a,
+.book-toc a:visited {
+    color: #FFF;
+}
+
 .book-menu.list-group {
     margin:10px 0;
 }

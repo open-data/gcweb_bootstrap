@@ -31,18 +31,22 @@
 {% macro book_links(items, attributes, menu_level) %}
   {% import _self as book_tree %}
   {% if items %}
-    <ul class="list-group menu list-unstyled">
+    {% if menu_level == 0 %}
+      <ul{{ attributes.addClass('book-menu', 'list-group', 'list-unstyled') }}>
+    {% else %}
+      <ul>
+    {% endif %}
     {% for item in items %}
-      <li{{ item.attributes }}>
-	{% if menu_level ==0 %}
-	  <h3 class="wb-navcurr">{{ link(item.title, item.url) }}</h3>
-	{% else %}
-	  <a class="list-group-item" href="{{item.url}}">{{ item.title }}</a>
-	{% endif %}
-        {% if item.below %}
-          {{ book_tree.book_links(item.below, attributes, menu_level + 1) }}
-        {% endif %}
-      </li>
+      {% if path('entity.node.canonical', {'node': item.url.routeParameters.node}) == path('<current>') %}
+        <li{{ item.attributes.addClass('list-group-item', 'active') }}>
+      {% else %}
+        <li{{ item.attributes.addClass('list-group-item') }}>
+      {% endif %}
+          {{ link(item.title, item.url) }}
+          {% if item.below %}
+            {{ book_tree.book_links(item.below, attributes, menu_level + 1) }}
+          {% endif %}
+        </li>
     {% endfor %}
     </ul>
   {% endif %}

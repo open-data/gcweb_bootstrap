@@ -51,3 +51,9 @@ front:
   css:
     theme:
       css/front.min.css: { minified: true, attributes: { defer: true } }
+
+# Library for guides
+book:
+  css:
+    theme:
+      css/book.css: { minified: true, attributes: { defer: true } }

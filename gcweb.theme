@@ -49,6 +49,10 @@ function gcweb_preprocess_page(&$variables) {
 
   // footer navigation
   $variables['custom_footer'] = theme_get_setting('gcweb_footer', 'gcweb');
+
+  // site name
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+
 }
 
 /**
@@ -113,6 +117,13 @@ function gcweb_page_attachments_alter(&$page) {
     $is_front = \Drupal::service('path.matcher')->isFrontPage();
     if ($is_front) {
       $page['#attached']['library'][] = 'gcweb/front';
+    }
+  }
+
+  // Load book library for book pages
+  if (is_object($node = \Drupal::request()->get('node'))) {
+    if ($node->getType() === 'book') {
+      $page['#attached']['library'][] = 'gcweb/book';
     }
   }
 

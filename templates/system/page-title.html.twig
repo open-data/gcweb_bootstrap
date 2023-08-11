@@ -18,7 +18,7 @@
 #}
 {% if title %}
   {% if title is not iterable or title['#markup'] %}
-    <h1{{ title_attributes }} id="wb-cont">{{ title }}</h1>
+    <h1{{ title_attributes }} id="wb-cont" property="name" dir="ltr">{{ title }}</h1>
   {% else %}
     <h1{{ title_attributes.addClass("wb-inv") }} id="wb-cont">{{ title }}</h1>
   {% endif %}

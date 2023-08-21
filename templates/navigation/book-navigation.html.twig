@@ -32,7 +32,7 @@
 #}
 {% if has_links %}
   <nav role="navigation" aria-labelledby="book-label-{{ book_id }}">
-    <ul class="pager col-md-8 pull-right">
+    <ul class="pager">
         <li class="previous {% if not prev_url %}disabled{% endif %}">
           <a href="{{ prev_url }}" rel="prev" title="{{ 'Go to previous page'|t }}">{{ 'Previous'|t }} </a>
         </li>

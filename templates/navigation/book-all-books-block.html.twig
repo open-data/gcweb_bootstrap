@@ -15,9 +15,10 @@
  * @see template_preprocess_book_all_books_block()
  */
 #}
+<h2 class="h3 mrgn-tp-0 mrgn-bttm-lg">{{ 'Table of contents'|t }}</h2>
+
 {% for book in book_menus %}
-  <nav id="wb-sec" class="visible-md visible-lg" role="navigation" typeof="SiteNavigationElement" aria-label="{% trans %}Book outline for {{ book.title }}{% endtrans %}">
-    <h2>{{ book.title }}</h2>
-    {{ book.menu }}
-  </nav>
+    <nav role="navigation" class="visible-md visible-lg">
+        {{ book.menu }}
+    </nav>
 {% endfor %}

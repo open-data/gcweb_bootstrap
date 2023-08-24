@@ -46,7 +46,7 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal/bootstrap": "3.29.0",
+        "drupal/bootstrap": "3.26.0",
         "drupal/core": "^8 || ^9",
         "wet-boew/theme-gcweb": "13.3.0",
         "wet-boew/wet-boew": "v4.0.63"
@@ -58,7 +58,11 @@
         "patchLevel": {
             "drupal/core": "-p2"
         },
-        "patches": { },
+        "patches": {
+            "drupal/bootstrap": {
+                "After updrade from D7 website : TypeError: Cannot access offset of type string on string in bootstrap\src\Plugin\Provider\DrupalBootstrapStyles.php": "https://www.drupal.org/files/issues/2023-05-17/3305635-5.patch",
+            }
+        },
         "installer-types": [
             "npm-asset",
             "bower-asset"

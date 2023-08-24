@@ -60,7 +60,7 @@
         },
         "patches": {
             "drupal/bootstrap": {
-                "After updrade from D7 website : TypeError: Cannot access offset of type string on string in DrupalBootstrapStyles.php": "https://www.drupal.org/files/issues/2023-05-17/3305635-5.patch",
+                "After updrade from D7 website : TypeError: Cannot access offset of type string on string in DrupalBootstrapStyles.php": "https://www.drupal.org/files/issues/2023-05-17/3305635-5.patch"
             }
         },
         "installer-types": [

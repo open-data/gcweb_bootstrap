@@ -78,3 +78,6 @@
 .book-content h1 {
     border-bottom: none;
 }
+.book-content {
+    margin-left: 15px;
+}

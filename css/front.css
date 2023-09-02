@@ -5,10 +5,13 @@
   padding: 0;
   margin: 15px;
 }
-.intro-box a {
+.intro-box a, a:hover {
   color: white;
+  text-decoration: none;
 }
-.intro-box a:hover {
+.intro-box:hover {
+  background: #1B2734;
+  box-shadow: 10px 10px 10px #26374A;
 }
 .intro-box-text-section {
   padding: 10px 30px 30px 30px;
@@ -34,15 +37,26 @@
   padding: 30px;
   margin: 15px;
 }
+.featured:hover {
+  box-shadow: 0 10px 30px #26374A;
+  background: lightgray;
+}
+.featured a, a:hover {
+    text-decoration: none;
+}
 .featured-background {
   background: #CCD4DD;
-  padding-top: 30px;
+  padding-top: 12px;
   padding-bottom: 50px;
 }
 @media (min-width: 768px) {
-.featured {
-  margin-right: 6%;
+  .featured {
+    margin-right: 6%;
   }
+  .money-value {
+    display: block;
+  }
+}
 .mrgn-block {
     border-left: 4px solid #26374a;
     color: #26374a;

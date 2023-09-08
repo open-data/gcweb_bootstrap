@@ -46,10 +46,11 @@
 }
 .featured:hover {
   box-shadow: 0 4px 4px gray;
+  color: black;
+  background: #EEEEEE;
 }
 .featured a, .featured a:hover {
   text-decoration: none;
-  color: black;
 }
 .featured-background {
   background: #CCD4DD;

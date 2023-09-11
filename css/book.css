@@ -85,3 +85,6 @@
     float: unset;
     width: 100%;
 }
+.gc-subway.provisional.gc-subway-index dl dt {
+    padding-bottom:2em;
+}

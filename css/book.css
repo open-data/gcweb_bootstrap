@@ -81,3 +81,7 @@
 .book-content {
     padding-left: 30px;
 }
+.gc-subway-wrapper {
+    float: unset;
+    width: 100%;
+}

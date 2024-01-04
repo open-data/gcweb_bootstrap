@@ -44,10 +44,10 @@
         }
     ],
     "require": {
-        "composer/installers": "^1.2",
-        "cweagans/composer-patches": "^1.6.5",
-        "drupal/bootstrap": "3.26.0",
-        "drupal/core": "^8 || ^9",
+        "composer/installers": "^1.9",
+        "cweagans/composer-patches": "^1.7.0",
+        "drupal/bootstrap": "3.29.0",
+        "drupal/core": "^8 || ^9 || ^10",
         "wet-boew/theme-gcweb": "13.3.0",
         "wet-boew/wet-boew": "v4.0.63"
     },

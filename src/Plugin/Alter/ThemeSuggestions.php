@@ -27,7 +27,8 @@ class ThemeSuggestions extends BootstrapThemeSuggestions
         // custom block
         case 'block':
             if (isset($variables['elements']['content']['#block_content'])) {
-                $bundle = $variables['elements']['content']['#block_content']->bundle();
+                $bundle = $variables['elements']['content']['#block_content']
+                  ->bundle();
                 $suggestions[] = 'block__' . $bundle;
             }
             break;
@@ -69,7 +70,8 @@ class ThemeSuggestions extends BootstrapThemeSuggestions
             $view = $variables['view'];
             if (is_object($view)) {
                 $suggestions[] = 'view_view__' . $view->id();
-                $suggestions[] = 'view_view__' . $view->id() . '__' . $view->current_display;
+                $suggestions[] = 'view_view__' . $view->id()
+                  . '__' . $view->current_display;
             }
             break;
 

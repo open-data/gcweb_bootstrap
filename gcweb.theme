@@ -175,16 +175,6 @@ function gcweb_preprocess_user(&$variables) {
       $variables['content_recent'] = $content_recent->render();
     }
   }
-
-  // recent comments
-  if (\Drupal::currentUser()->hasPermission('administer comments')) {
-    $comments_recent = Views::getView('comments_recent');
-    if (is_object($comments_recent)) {
-      $comments_recent->setDisplay('block_1');
-      $comments_recent->execute();
-      $variables['comments_recent'] = $comments_recent->render();
-    }
-  }
 }
 
 /**

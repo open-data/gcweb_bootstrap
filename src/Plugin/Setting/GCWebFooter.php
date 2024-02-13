@@ -21,4 +21,6 @@ use Drupal\bootstrap\Plugin\Setting\SettingBase;
  *   }
  * )
  */
-class GCWebFooter extends SettingBase {}
+class GCWebFooter extends SettingBase
+{
+}

@@ -3,10 +3,6 @@ global-styling:
   css:
     theme:
       css/style.min.css: { minified: true, attributes: { defer: true } }
-  js:
-    js/citation.min.js: { minified: true, attributes: { defer: true } }
-  dependencies:
-    - core/jquery
 
 # Library for loading WET-BOEW CDTS template scripts
 wet-load:

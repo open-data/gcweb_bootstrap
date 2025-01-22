@@ -38,7 +38,7 @@
   {% endif %}
   {%
     set classes = [
-    view.storage.id == 'suggested_datasets' ? 'wb-tables',
+    'wb-tables',
     'table',
     bordered ? 'table-bordered',
     condensed ? 'table-condensed',
@@ -47,11 +47,7 @@
     sticky ? 'sticky-enabled',
   ]
   %}
-  {% if view.storage.id == 'suggested_datasets' %}
-    <table{{ attributes.addClass(classes).setAttribute('data-wb-tables', '{ "columnDefs": [ { "orderData": 4, "targets": 4 } ], "order": [[ 4, "desc" ]] }') }}>
-  {% else %}
-      <table{{ attributes.addClass(classes) }}>
-  {% endif %}
+    <table{{ attributes.addClass(classes) }}>
       {% if caption_needed %}
         <caption>
           {% if caption %}
@@ -114,15 +110,7 @@
                 {% set column_classes = column_classes|merge(['views-field-' ~ field]) %}
               {% endfor %}
             {% endif %}
-            {% if (view.storage.id == 'suggested_datasets') and (key == 'field_vote_up_down') %}
-              {% set dataOrder = 1 %}
-              {% for content in column.content %}
-                {% set dataOrder = content.field_output|render|striptags|trim %}
-              {% endfor %}
             <td{{ column.attributes.addClass(column_classes) }}>
-            {% else %}
-              <td{{ column.attributes.addClass(column_classes) }}>
-            {% endif %}
             {%- if column.wrapper_element -%}
               <{{ column.wrapper_element }}>
               {% for content in column.content %}

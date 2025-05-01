@@ -142,6 +142,21 @@ function gcweb_page_attachments_alter(&$page) {
       'ga4_script',
     ];
   }
+
+  // add meta tag for robots on the search pages
+  $current_path = \Drupal::service('path.current')->getPath();
+    $path_alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+    if ($path_alias && strpos($path_alias,'/search/')) {
+      $metaRobots = [
+        '#tag' => 'meta',
+        '#attributes' => [
+          'property' => 'robots',
+          'content' => 'noindex, nofollow, noarchive, nosnippet, noodp, noydir, noimageindex',
+        ],
+      ];
+      $page['#attached']['html_head'][] = [$metaRobots, 'robots'];
+    }
+
 }
 
 /**

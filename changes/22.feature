@@ -1,0 +1,1 @@
+Render a `noindex` robots meta tag for search routes.

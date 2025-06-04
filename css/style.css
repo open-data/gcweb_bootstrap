@@ -565,3 +565,10 @@ h1 span.stacked span:nth-child(2) {
 .guide figure img {
     border: 1px #ddd solid !important;
 }
+
+/* table */
+table tr th, table tr th a, table tr th a:hover, table tr th a:focus {
+  color: black;
+  background: white;
+  font-weight: bold;
+}

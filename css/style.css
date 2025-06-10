@@ -205,24 +205,6 @@ ul.subjects li a span {
   padding: 0 10px !important;
 }
 
-/* layout builder */
-
-#drupal-off-canvas select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-#drupal-off-canvas *, #drupal-off-canvas *:not(div) {
-  word-spacing: normal;
-  background: inherit;
-  font-family: "Lucida Grande", "Lucida Sans Unicode", "liberation sans", "Glyphicons Halflings", sans-serif;
-}
-
-#drupal-off-canvas ul li, #drupal-off-canvas ol li {
-  padding: 0;
-  border-bottom: none
-}
-
 /* highlighting using mark */
 mark {
   background-color: yellow !important;
@@ -455,7 +437,7 @@ ul.js-facets-checkbox-links .facet-item label {
 #wb-bc ol {
   margin-top: 15px;
   padding-left: 0px !important;
-  padding-right: 0px !improtant;
+  padding-right: 0px !important;
 }
 
 .provisional.most-requested-bullets li {
@@ -582,4 +564,11 @@ h1 span.stacked span:nth-child(2) {
 }
 .guide figure img {
     border: 1px #ddd solid !important;
+}
+
+/* table */
+table tr th, table tr th a, table tr th a:hover, table tr th a:focus {
+  color: black;
+  background: white;
+  font-weight: bold;
 }

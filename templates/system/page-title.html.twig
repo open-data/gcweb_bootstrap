@@ -16,6 +16,7 @@
  * @see template_preprocess_page_title()
  */
 #}
+{{ title_prefix }}
 {% if title %}
   {% if title is not iterable or title['#markup'] %}
     <h1{{ title_attributes }} id="wb-cont">{{ title }}</h1>
@@ -23,4 +24,4 @@
     <h1{{ title_attributes.addClass("wb-inv") }} id="wb-cont">{{ title }}</h1>
   {% endif %}
 {% endif %}
-
+{{ title_suffix }}

@@ -44,7 +44,7 @@
         }
     ],
     "require": {
-        "composer/installers": "^1.9",
+        "composer/installers": "^2.0",
         "cweagans/composer-patches": "^1.7.0",
         "drupal/bootstrap": "5.0.1",
         "drupal/core": "^8 || ^9 || ^10",

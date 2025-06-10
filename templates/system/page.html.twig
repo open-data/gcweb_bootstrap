@@ -240,6 +240,6 @@
 {% else %}
   <div id="def-footerr">
     {# Write closure fall-back #}
-    {% include '@gcweb/static/footer-en.html.twig' %}
+    {% include '@gcweb/static/footer-' ~ langcode ~ '.html.twig' %}
   </div>
 {% endif %}

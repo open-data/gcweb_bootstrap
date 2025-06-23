@@ -5,7 +5,10 @@
   padding: 0;
   margin: 15px;
 }
-.intro-box a, .intro-box a:hover {
+.col-md-3.intro-box {
+  padding: 0;
+}
+.intro-box a, .intro-box a:hover, .intro-box a:visited {
   color: white;
   text-decoration: none;
 }

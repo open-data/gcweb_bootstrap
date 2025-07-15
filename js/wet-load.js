@@ -53,6 +53,33 @@
                             }
                         );
                     }
+
+                    // Add `isArray` polyfill for Zepto
+                    if (typeof Zepto !== 'undefined' && typeof Zepto.isArray !== 'function') {
+                        Zepto.isArray = Array.isArray;
+                    }
+
+                    // Add `isArray` polyfill for jQuery
+                    if (typeof jQuery !== 'undefined' && typeof jQuery.isArray !== 'function') {
+                        jQuery.isArray = Array.isArray;
+                    }
+
+                    // polyfill for trim function
+                    if (typeof $ !== 'undefined' && typeof $.trim === 'undefined') {
+                        $.trim = function(text) {
+                            return text == null ? "" : (text + "").trim();
+                        };
+                    }
+
+                    // polyfill for isFunction deprecated in JQuery 4
+                    $.fn.isFunction = function (fn) {
+                        return typeof fn === 'function';
+                    };
+
+                    $.isFunction = function (obj) {
+                        return typeof obj === 'function';
+                    };
+
                 }
             );
         }

@@ -46,7 +46,7 @@
     "require": {
         "composer/installers": "^2.3",
         "cweagans/composer-patches": "^1.7.0",
-        "drupal/bootstrap": "5.0.1",
+        "drupal/bootstrap": "5.0.2",
         "drupal/core": "^8 || ^9 || ^10 || ^11",
         "wet-boew/theme-gcweb": "16.2.0",
         "wet-boew/wet-boew": "v4.0.85"

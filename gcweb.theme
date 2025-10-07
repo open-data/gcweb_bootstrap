@@ -57,7 +57,7 @@ function gcweb_page_attachments_alter(&$page) {
   $langCode = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
   // specify the version for WET-BOEW CDTS
-  $gcweb_version = 'v5_0_4';
+  $gcweb_version = 'v5_0_5';
   $gcweb_url = 'https://www.canada.ca/etc/designs/canada/cdts/gcweb/' . $gcweb_version;
 
   // CDTS - Load template scripts

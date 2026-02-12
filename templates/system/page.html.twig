@@ -172,7 +172,6 @@
       {% block content %}
 
         <a id="main-content"></a>
-
         {% if node.bundle != 'theme_and_topic_page' %}
           <div {{ content_attributes.addClass(main_classes) }}>
           {{ page.title }}
@@ -191,6 +190,14 @@
 
             {# Write closure fall-back #}
             <div class="pagedetails">
+              <h2>
+                <div class="ai-answers-trigger"
+                  data-banner-title=""
+                  data-banner-link-text="{{ 'Ask AI Answers for assistance'|t }}"
+                  data-rescue-title="&lt;strong&gt;{{ 'Need help?'|t }}&lt;/strong&gt;"
+                  data-rescue-link-text="{{ 'Ask AI Answers for help'|t }}">
+                </div>
+              </h2>
               <div class="row">
                 <div class="col-sm-4 col-md-3 col-lg-3">
                 </div>

@@ -42,9 +42,6 @@ front:
   css:
     theme:
       css/front.min.css: { minified: true, attributes: { defer: true } }
-
-# Library for guides
-book:
-  css:
-    theme:
-      css/book.css: { minified: true, attributes: { defer: true } }
+      css/gc-thematique.min.css: { minified: true, attributes: { defer: true } }
+  js:
+    js/gc-thematique.min.js: { preprocess: false, minified: false, attributes: { defer: true } }

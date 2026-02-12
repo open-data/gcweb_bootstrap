@@ -90,7 +90,6 @@ function gcweb_page_attachments_alter(&$page) {
 
   // Load WET-BOEW libraries
   $page['#attached']['library'][] = 'gcweb/wet-boew';
-  $page['#attached']['library'][] = 'gcweb/wet-load';
 
   // Load highlight library for Landing pages
   if (is_object($node = \Drupal::request()->get('node'))) {
@@ -109,6 +108,8 @@ function gcweb_page_attachments_alter(&$page) {
     $is_front = \Drupal::service('path.matcher')->isFrontPage();
     if ($is_front) {
       $page['#attached']['library'][] = 'gcweb/front';
+    } else {
+        $page['#attached']['library'][] = 'gcweb/wet-load';
     }
   }
 

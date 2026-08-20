@@ -22,3 +22,4 @@ regions:
 
 libraries:
   - 'gcweb/global-styling'
+  - 'gcweb/exit-alert'

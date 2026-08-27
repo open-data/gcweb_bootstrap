@@ -4,6 +4,11 @@ global-styling:
     theme:
       css/style.min.css: { minified: true, attributes: { defer: true } }
 
+# Library for exit alert
+exit-alert:
+  js:
+    /data/static/js/alert_exit.js: {}
+
 # Library for loading WET-BOEW CDTS template scripts
 wet-load:
   js:

@@ -7,7 +7,7 @@ global-styling:
 # Library for exit alert
 exit-alert:
   js:
-    /data/static/js/alert_exit.js: {}
+    /data/static/js/alert_exit.js: { type: "external", attributes: { defer: true }}
 
 # Library for loading WET-BOEW CDTS template scripts
 wet-load:
